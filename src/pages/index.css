@@ -1,6 +1,38 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts.css);
+@import url(../blocks/root/root.css);
+@import url(../blocks/search/search.css);
+@import url(../blocks/header/header.css);
+@import url(../blocks/head/head.css);
+@import url(../blocks/logo/logo.css);
+@import url(../blocks/nav/nav.css);
+@import url(../blocks/main-menu/main-menu.css);
+@import url(../blocks/main-menu/main-menu-button.css);
+@import url(../blocks/about-author/about-author.css);
+@import url(../blocks/footer/footer.css);
 
 body {
-  background-color: #ffffff;
+  background-color: #fff;
+}
+
+.link, .link:active, .link:hover, .link:visited{
+  text-decoration: none;
+}
+
+.link.active {
+  border-bottom: 3px solid #fff;
+  height: 80px;
+  line-height: 80px;
+}
+
+.link.inactive {
+  color: #b6bcbf;
+}
+
+.nologin {
+  display: none;
+}
+
+div {
+/*border: 1px solid red;*/
 }

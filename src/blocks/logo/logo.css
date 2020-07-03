@@ -1,0 +1,14 @@
+.logo {
+  width: 200px;
+  height: 24px;
+}
+
+.logo__text {
+  margin: 0;
+  font-family: 'Roboto Slab', Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fff;
+}

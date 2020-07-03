@@ -5,19 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="<%=require('./images/favicon.png').default%>" type="image/png">
-  <meta name="Description" content="Дипломная работа Яндекс Практикум. Поиск новостей"/>
+  <meta name="description" content="Дипломная работа Яндекс Практикум. Поиск новостей">
   <meta name="author" content="Павел Маслов">
   <title>News Finder</title>
 </head>
 <body>
   <div class="root">
     <header class="header root__section">
+      <div class="head">
+        <div class="logo">
+          <h1 class="logo__text">NewsExplorer</h1>
+        </div>
+        <div class="nav">
+          <ul class="main_menu">
+            <li class="main_menu_button"><a href="#" class="link main_menu_link active">Главная</a></li>
+            <li class="main_menu_button main_menu_button__save nologin"><a href="#" class="link main_menu_link inactive">Сохраненные статьи</a></li>
+            <li class="main_menu_button main_menu_button__auth"><a href="#" class="link main_menu_link">Авторизоваться</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="search">
+        <h2 class="search_title">Что в мире творится?</h2>
+        <h3 class="search_text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h3>
+        <form class="search_form" name="new-search">
+          <div class="input-container">
+            <input id="inputtag" type="text" name="tag" class="search__input search__input_type_tag error" placeholder="Введите тему новости">
+            <button type="submit" class="button search__button">Искать</button>
+          </div>
+        </form>
+      </div>
     </header>
-    <div class="search root__section">
-    </div>
     <div class="about-author root__section">
+      <img class="about-author_avatar" src="<%=require('./images/avatar.png').default%>">
+      <div class="about-author_text">
+        <h2 class="about-author_text about-author_text__title ">Об авторе</h2>
+        <p class="about-author_text about-author_text__info">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
+        <p class="about-author_text about-author_text__info">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.</p>
+      </div>
     </div>
     <div class="footer root__section">
+      <p class="footer_copy">&copy; 2020 0911.ru, Powered by News API</p>
+      <div class="footer_links">
+      <a class="link footer_link footer_link__home" href="#">Главная</a>
+      <a class="link footer_link footer_link__yap" href="https://praktikum.yandex.ru" target="_blank">Яндекс.Практикум</a>
+      <a class="link footer_link footer_link__gh" href="#"><img src="<%=require('./images/gh.png').default%>"></a>
+      <a class="link footer_link footer_link__fb" href="#"><img src="<%=require('./images/fb.png').default%>"></a>
+      </div>
     </div>
   </div>
   </body>

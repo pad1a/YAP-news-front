@@ -1,0 +1,17 @@
+.main_menu {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  font-family: 'Roboto', Arial;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #fff;
+}
+
+.main_menu_link {
+  color: #fff;
+}

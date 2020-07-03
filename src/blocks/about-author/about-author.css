@@ -1,0 +1,35 @@
+.about-author {
+  background-color: #fff;
+  display: flex;
+  height: 624px;
+  padding-top: 80px;
+}
+
+.about-author_text{
+  max-width: 600px;
+  font-family: 'Roboto Slab', Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1a1b22;
+}
+
+.about-author_avatar {
+  width: 464px;
+  height: 464px;
+  margin-right: 56px;
+  margin-left: 104px;
+}
+
+.about-author_text__title {
+  margin: 0;
+  margin-top: 51px;
+}
+
+.about-author_text__info {
+  margin: 24px 0;
+  font-family: 'Roboto', Arial;
+  font-size: 18px;
+  line-height: 24px;
+}
