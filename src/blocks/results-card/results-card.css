@@ -5,7 +5,7 @@
   width: 400px;
   background-color: #fff;
   border-radius: 16px;
-  min-height: 576px;
+  height: 576px;
   overflow: hidden;
   position: relative;
 }
@@ -62,4 +62,53 @@
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: #b6bcbf;
+}
+
+@media screen and (max-width: 1440px) {
+  .results-card {
+    width: 224px;
+    height: 420px;
+  }
+  .results-card__image {
+    height: 150px;
+    margin-bottom: 16px;
+  }
+  .results-card__image-content {
+    height: 150px;
+    width: 224px;
+  }
+  .results-card__date {
+    margin: 16px auto 12px 16px;
+  }
+  .results-card__title {
+    margin: 12px 16px 10px 16px;
+    font-size: 22px;
+    line-height: 24px;
+    max-height: 72px;
+    overflow: hidden;
+  }
+  .results-card__text {
+    margin: 10px 16px 12px 16px;
+    font-size: 16px;
+    line-height: 22px;
+    max-height: 88px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .results-card__source {
+    left: 16px;
+    bottom: 16px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .results-card__favorite {
+    right: 16px;
+    top: 16px;
+  }
+  .results-card__auth-hint {
+    right: 60px;
+    top: 16px;
+    width: 150px;
+    font-size: 8px;
+  }
 }

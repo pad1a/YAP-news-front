@@ -1,7 +1,6 @@
 .about-author {
   background-color: #fff;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   height: 624px;
   padding-top: 80px;
@@ -34,4 +33,29 @@
   font-family: 'Roboto', Arial;
   font-size: 18px;
   line-height: 24px;
+}
+
+@media screen and (max-width: 1440px) {
+  .about-author{
+    padding: 0;
+    height: 354px;
+  }
+  .about-author_avatar {
+    margin: 61px 32px 61px 40px;
+    width: 232px;
+    height: 232px;
+  }
+  .about-author_text{
+    max-width: 424px;
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .about-author_text__title {
+    margin-top: 40px;
+  }
+  .about-author_text__info {
+    margin: 16px 0;
+    font-size: 18px;
+    line-height: 24px;
+  }
 }

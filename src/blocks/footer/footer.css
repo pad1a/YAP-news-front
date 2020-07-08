@@ -17,6 +17,7 @@
 
 .footer_links {
   padding-right: 104px;
+  display: flex;
 }
 
 .footer_link {
@@ -37,4 +38,25 @@
 
 .footer_link__home{
   margin-right: 28px;
+}
+
+@media screen and (max-width: 1440px) {
+  .footer {
+    min-height: 64px;
+  }
+  .footer_copy {
+    margin-left: 40px;
+  }
+  .footer_links {
+    padding-right: 40px;
+  }
+  .footer_link__home {
+    margin-right: 26px;
+  }
+  .footer_link__yap {
+    margin-right: 26px;
+  }
+  .footer_link__gh {
+    margin-right: 20px;
+  }
 }

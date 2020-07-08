@@ -2,6 +2,19 @@ import './pages/index.css';
 import Popup from './scripts/popup.js';
 import FormValidator from "./scripts/formvalidator.js";
 
+// Обработка текста новостей (отключена до чекпоинта JS
+// import Overflow from './scripts/overflow';
+// const overNewsText = new Overflow(results-card__text, 20);
+// document.addEventListener("DOMContentLoaded", overNewsText.overflow());
+
+// Пример обрезки текста новости. (доработать в цикл?)
+const size = 75;
+const newsContent = document.querySelector('.results-card__text');
+const newsText = newsContent.innerHTML;
+if(newsText.length > size) {
+  newsContent.innerHTML = newsText.slice(0, size) + ' ...';
+}
+
 const popupAuthUser = new Popup(document.getElementById('authuser'), document.forms.auth);
 const popupNewUser = new Popup(document.getElementById('newuser'), document.forms.new);
 const popupSuccess = new Popup(document.getElementById('success'));
