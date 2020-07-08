@@ -1,0 +1,21 @@
+.popup__error-message {
+    color: #ff0000;
+    font-size: 12px;
+    line-height: 15px;
+    transition: .3s;
+    padding: 0px;
+    opacity: 0;
+    display: block;
+    font-family: 'Inter', Arial;
+    font-style: normal;
+    font-weight: normal;
+}
+#error-email, #error-pass, #error-name{
+    min-height: 14px;
+    padding: 0 0 10px 0;
+    display: block;
+}
+
+.input-container__invalid .popup__error-message {
+    opacity: 1;
+}

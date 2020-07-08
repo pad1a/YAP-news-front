@@ -10,6 +10,9 @@
 @import url(../blocks/main-menu/main-menu-button.css);
 @import url(../blocks/about-author/about-author.css);
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/results/results.css);
+@import url(../blocks/results-card/results-card.css);
 
 body {
   background-color: #fff;
@@ -29,7 +32,7 @@ body {
   color: #b6bcbf;
 }
 
-.nologin {
+.nologin, .nodisplay {
   display: none;
 }
 

@@ -1,0 +1,22 @@
+.results-card__favorite {
+  background: #fff;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  background-image: url('../../../images/rectangle.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.results-card__favorite:hover {
+  background-image: url('../../../images/hover.svg');
+}
+
+.results-card__favorite_marked {
+  background-image: url('../../../images/marked.png');
+}
+

@@ -1,0 +1,26 @@
+.popup__form {
+  margin-top: 22px;
+}
+
+.popup__form_text {
+  text-align: center;
+  font-family: 'Inter', Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin: 16px 0 0 0;
+}
+
+.popup__form_text__success {
+  text-align: left;
+  margin: 14px 0 0 0;
+}
+
+.popup__form_auth-link,
+.popup__form_newuser-link,
+.popup__form_success-link {
+  cursor: pointer;
+  color: #2f71e5;
+}

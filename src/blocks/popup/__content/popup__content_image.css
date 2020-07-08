@@ -1,0 +1,13 @@
+.popup__content_image {
+  max-width: 80vh;
+  width: auto;
+  min-height: auto;
+  max-height: 80vh;
+  background-color: transparent;
+  position: relative;
+  padding: 0px 0px;
+}
+.popupbigimg{
+max-width: 80vh;
+max-height: 80vh;
+}

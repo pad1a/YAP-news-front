@@ -1,0 +1,31 @@
+.results__preloader {
+  min-height: 282px;
+  padding-top: 80px;
+}
+.results__preloader_circle-preloader {
+  display: block;
+  width: 72px;
+  height: 72px;
+  border: 1px solid #bbbbbb;
+  border-bottom-color: #eaeaea;
+  border-radius: 50%;
+  margin: auto;
+  animation: spin .95s infinite linear;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.results__preloader_text {
+  font-family: 'Roboto', Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #b6bcbf;
+  margin: 24px 0 0 0;
+}
