@@ -9,6 +9,9 @@ export default class Popup {
     this.popupElement
       .querySelector('.popup__close')
       .addEventListener('click', this.close.bind(this));
+    this.popupElement
+      .querySelector('.popup__overlay')
+      .addEventListener('click', this.close.bind(this));
   }
 
   open(event) {
