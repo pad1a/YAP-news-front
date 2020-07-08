@@ -1,6 +1,8 @@
 .about-author {
   background-color: #fff;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   height: 624px;
   padding-top: 80px;
 }

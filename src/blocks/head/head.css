@@ -9,3 +9,10 @@
   box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
   margin-bottom: 80px;
 }
+
+@media screen and (max-width: 1440px) {
+  .head {
+    padding: 0 40px;
+    margin-bottom: 38px;
+  }
+}

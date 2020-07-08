@@ -78,3 +78,34 @@
 .search__button:active {
   background: #2a65cc;
 }
+
+.search_form_input-container {
+  position: relative;
+}
+
+@media screen and (max-width: 1440px) {
+  .search {
+    margin: 0 0 0 160px;
+    width: 448px;
+  }
+  .search_title {
+    font-size: 36px;
+    line-height: 40px;
+    width: 300px;
+    height: auto;
+    margin-bottom: 16px;
+  }
+  .search_text {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 48px;
+  }
+  .search__input {
+    height: 56px;
+  }
+  .search__button {
+    width: 160px;
+    height: 56px;
+    right: 0px;
+  }
+}
