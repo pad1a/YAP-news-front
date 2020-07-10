@@ -27,7 +27,7 @@ export default class FormValidator {
       errorElement.textContent = errorMessage;
       this.activateError(element);
       this.setSubmitButtonState(element);
-      return false
+      return false;
     }
     this.setSubmitButtonState(element);
     return true;
@@ -67,10 +67,10 @@ export default class FormValidator {
   validateEmail(element) {
     const reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (reg.test(element.value)) {
-      return true
+      return true;
     }
     this.resetError(element);
-    return false
+    return false;
   }
 
   // метод показа ошибки

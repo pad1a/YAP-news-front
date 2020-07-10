@@ -12,10 +12,12 @@
 <body>
   <div class="root">
     <header class="header root__section">
-      <div class="head">
+      <div id="head" class="head">
         <div class="logo">
           <h1 class="logo__text">NewsExplorer</h1>
         </div>
+        <span class="nav_burger nav_burger__open"></span>
+        <span class="nav_burger nav_burger__close nav_burger__hide"></span>
         <div class="nav">
           <ul class="main_menu">
             <li class="main_menu_button"><a href="#" class="link main_menu_link active">Главная</a></li>
@@ -23,6 +25,13 @@
             <li class="main_menu_button main_menu_button__auth">Авторизоваться</li>
           </ul>
         </div>
+      </div>
+      <div id="nav-mobile" class="nav-mobile">
+        <ul class="main_menu__mobile">
+          <li class="main_menu_button"><a href="#" class="link main_menu_link active">Главная</a></li>
+          <li class="main_menu_button main_menu_button__save"><a href="#" class="link main_menu_link inactive">Сохраненные статьи</a></li>
+          <li class="main_menu_button main_menu_button__auth">Грета</li>
+        </ul>
       </div>
       <div class="search">
         <h2 class="search_title">Что в мире творится?</h2>
@@ -43,7 +52,7 @@
           <p class="results__preloader_text">Идет поиск новостей...</p>
         </div>
         <div class="results__noresults nodisplay">
-          <img class="results__noresults_image" src="<%=require('./images/not-found.png').default%>">
+          <img class="results__noresults_image" src="<%=require('./images/not-found.png').default%>" alt="Нет результатов">
           <h3 class="results__noresults_title">Ничего не найдено</h3>
           <p class="results__noresults_text">К сожалению по вашему запросу ничего не найдено.</p>
         </div>
@@ -51,7 +60,7 @@
       <div class="results_cards">
         <div class="results-card">
           <div class="results-card__image">
-            <img class="results-card__image-content" src="<%=require('./images/image_08.png').default%>">
+            <img class="results-card__image-content" src="<%=require('./images/image_08.png').default%>" alt="Изображение новости">
             <div class="results-card__auth-hint nodisplay"></div>
             <div class="results-card__favorite"></div>
           </div>
@@ -62,7 +71,7 @@
         </div>
         <div class="results-card">
           <div class="results-card__image">
-            <img class="results-card__image-content" src="<%=require('./images/image_07.png').default%>">
+            <img class="results-card__image-content" src="<%=require('./images/image_07.png').default%>" alt="Изображение новости">
             <div class="results-card__auth-hint nodisplay"></div>
             <div class="results-card__favorite results-card__favorite_marked"></div>
           </div>
@@ -74,7 +83,7 @@
         </div>
         <div class="results-card">
           <div class="results-card__image">
-            <img class="results-card__image-content" src="<%=require('./images/image_04.png').default%>">
+            <img class="results-card__image-content" src="<%=require('./images/image_04.png').default%>" alt="Изображение новости">
             <div class="results-card__auth-hint">Войдите, чтобы сохранять статьи</div>
             <div class="results-card__favorite"></div>
           </div>
@@ -88,7 +97,7 @@
 
     </section>
     <section class="about-author root__section">
-      <img class="about-author_avatar" src="<%=require('./images/avatar.png').default%>">
+      <img class="about-author_avatar" src="<%=require('./images/avatar.png').default%>" alt="Аватар">
       <div class="about-author_text">
         <h2 class="about-author_text about-author_text__title ">Об авторе</h2>
         <p class="about-author_text about-author_text__info">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
@@ -100,8 +109,8 @@
       <div class="footer_links">
       <a class="link footer_link footer_link__home" href="#">Главная</a>
       <a class="link footer_link footer_link__yap" href="https://praktikum.yandex.ru" target="_blank">Яндекс.Практикум</a>
-      <a class="link footer_link footer_link__gh" href="#"><img src="<%=require('./images/gh.png').default%>"></a>
-      <a class="link footer_link footer_link__fb" href="#"><img src="<%=require('./images/fb.png').default%>"></a>
+      <a class="link footer_link footer_link__gh" href="#"><img src="<%=require('./images/gh.png').default%>" alt="Иконка GH"></a>
+      <a class="link footer_link footer_link__fb" href="#"><img src="<%=require('./images/fb.png').default%>" alt="Иконка FB"></a>
       </div>
     </section>
     <!-- popup section -->
@@ -114,7 +123,7 @@
         <form class="popup__form" name="auth">
           <div class="input-container">
             <span class="popup__input-hint">Email</span>
-            <input id="email" type="text" name="email" class="popup__input popup__input_type_email error" placeholder="Введите почту"required>
+            <input id="email" type="text" name="email" class="popup__input popup__input_type_email error" placeholder="Введите почту" required>
             <span id="error-email" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
           <div class="input-container">
@@ -136,7 +145,7 @@
         <form class="popup__form" name="new">
           <div class="input-container">
             <span class="popup__input-hint">Email</span>
-            <input id="newemail" type="text" name="email" class="popup__input popup__input_type_email error" placeholder="Введите почту"required>
+            <input id="newemail" type="text" name="email" class="popup__input popup__input_type_email error" placeholder="Введите почту" required>
             <span id="error-newemail" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
           <div class="input-container">

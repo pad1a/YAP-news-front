@@ -5,6 +5,7 @@ export default class Popup {
     this.formElement = form;
     this.userinfoElement = userinfo;
   }
+
   setEventListeners() {
     this.popupElement
       .querySelector('.popup__close')
@@ -16,11 +17,11 @@ export default class Popup {
 
   open(event) {
     this.setEventListeners();
-    event.target.classList.contains('main_menu_button__auth') || event.target.classList.contains('popup__form_auth-link') || event.target.classList.contains('popup__form_newuser-link')
-      this.popupElement.classList.add('popup_is-opened');
-      const popUpButton = this.formElement.querySelector('.popup__button');
-      popUpButton.setAttribute('disabled', true);
-      popUpButton.classList.add('popup__button_disabled');
+    event.target.classList.contains('main_menu_button__auth') || event.target.classList.contains('popup__form_auth-link') || event.target.classList.contains('popup__form_newuser-link');
+    this.popupElement.classList.add('popup_is-opened');
+    const popUpButton = this.formElement.querySelector('.popup__button');
+    popUpButton.setAttribute('disabled', true);
+    popUpButton.classList.add('popup__button_disabled');
   }
 
   close() {
