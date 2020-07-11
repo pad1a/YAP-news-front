@@ -35,6 +35,11 @@ body {
 .nologin, .nodisplay {
   display: none;
 }
+@media screen and (max-width: 1440px) {
+  .link.active {
+    line-height: 66px;
+  }
+}
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .link.active {

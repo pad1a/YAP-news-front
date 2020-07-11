@@ -29,18 +29,13 @@
   }
   .main_menu__mobile {
     margin: 0;
-    padding: 16px;
+    padding: 16px 16px 24px 16px;
     font-family: 'Roboto', Arial;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 56px;
 
-  }
-  .main_menu_button__auth {
-    width: 288px;
-    height: 56px;
-    color: #fff;
   }
 }
 

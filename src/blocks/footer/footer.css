@@ -74,8 +74,8 @@
     width: 288px;
   }
   .footer_links {
-    width: 100%;
-    padding: 20px 16px 18px 16px;
+    width: 288px;
+    padding: 20px 0 18px 0;
     display: grid;
     /*grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 40px);*/
@@ -85,11 +85,11 @@
   }
   .footer_link__home {
     order: 1;
-    margin: 0 0 20px 16px;
+    margin: 0 0 20px 0;
   }
   .footer_link__yap {
     order: 4;
-    margin: 0 0 20px 16px;
+    margin: 0 0 20px 0;
   }
   .footer_link__gh {
     order: 2;
