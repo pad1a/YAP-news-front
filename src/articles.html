@@ -21,16 +21,16 @@
       <span class="nav_burger nav_burger__close nav_burger__hide nav_burger__close__save"></span>
       <div class="nav">
         <ul class="main_menu">
-          <li class="main_menu_button"><a href="#" class="link main_menu_link main_menu_link__save inactive">Главная</a></li>
-          <li class="main_menu_button main_menu_button__save"><a href="#" class="link main_menu_link main_menu_link__save active">Сохраненные статьи</a></li>
+          <li class="main_menu_button"><a href="/" class="link main_menu_link main_menu_link__save inactive">Главная</a></li>
+          <li class="main_menu_button main_menu_button__save"><a href="articles.html" class="link main_menu_link main_menu_link__save active">Сохраненные статьи</a></li>
           <li class="main_menu_button main_menu_button__auth main_menu_button__auth__save"><span class="username">Грета</span><img class="main_menu_button__auth_image" src="<%=require('./images/logout_black.png').default%>" alt="Logout"></li>
         </ul>
       </div>
     </div>
     <div id="nav-mobile" class="nav-mobile nav-mobile__save">
       <ul class="main_menu__mobile">
-        <li class="main_menu_button"><a href="#" class="link main_menu_link main_menu_link__save inactive">Главная</a></li>
-        <li class="main_menu_button main_menu_button__save"><a href="#" class="link main_menu_link main_menu_link__save active">Сохраненные статьи</a></li>
+        <li class="main_menu_button"><a href="/" class="link main_menu_link main_menu_link__save inactive">Главная</a></li>
+        <li class="main_menu_button main_menu_button__save"><a href="articles.html" class="link main_menu_link main_menu_link__save active">Сохраненные статьи</a></li>
         <li class="main_menu_button main_menu_button__auth main_menu_button__auth__save"><span class="username">Гретa</span><img class="main_menu_button__auth_image" src="<%=require('./images/logout_black.png').default%>" alt="Logout"></li>
       </ul>
     </div>
@@ -63,7 +63,7 @@
         <span class="results-card__date">2 августа, 2019</span>
         <h3 class="results-card__title">Национальное достояние – парки</h3>
         <p class="results-card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-        <a class="results-card__source link" href="#">Лента.ру</a>
+        <a class="results-card__source link" href="lenta.ru" target="_blank">Лента.ру</a>
       </div>
       <div class="results-card">
         <div class="results-card__image">
@@ -76,7 +76,7 @@
         <h3 class="results-card__title">Лесные огоньки: история одной фотографии</h3>
         <p class="results-card__text">Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного
           из местных чудес природы.</p>
-        <a class="results-card__source link" href="#">Медуза</a>
+        <a class="results-card__source link" href="meduza.io" target="_blank">Медуза</a>
       </div>
       <div class="results-card">
         <div class="results-card__image">
@@ -88,7 +88,7 @@
         <span class="results-card__date">2 августа, 2019</span>
         <h3 class="results-card__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h3>
         <p class="results-card__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...</p>
-        <a class="results-card__source link" href="#">Риа</a>
+        <a class="results-card__source link" href="lenta.ru" target="_blank">Риа</a>
       </div>
       <div class="results-card">
         <div class="results-card__image">
@@ -101,7 +101,7 @@
         <h3 class="results-card__title">Лесные огоньки: история одной фотографии</h3>
         <p class="results-card__text">Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного
           из местных чудес природы.</p>
-        <a class="results-card__source link" href="#">Медуза</a>
+        <a class="results-card__source link" href="meduza.io" target="_blank">Медуза</a>
       </div>
       <div class="results-card">
         <div class="results-card__image">
@@ -113,7 +113,7 @@
         <span class="results-card__date">2 августа, 2019</span>
         <h3 class="results-card__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h3>
         <p class="results-card__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...</p>
-        <a class="results-card__source link" href="#">Риа</a>
+        <a class="results-card__source link" href="ria.ru" target="_blank">Риа</a>
       </div>
     </div>
 
@@ -122,10 +122,10 @@
   <section class="footer root__section">
     <p class="footer_copy">&copy; 2020 0911.ru, Powered by News API</p>
     <div class="footer_links">
-      <a class="link footer_link footer_link__home" href="#">Главная</a>
+      <a class="link footer_link footer_link__home" href="/">Главная</a>
       <a class="link footer_link footer_link__yap" href="https://praktikum.yandex.ru" target="_blank">Яндекс.Практикум</a>
-      <a class="link footer_link footer_link__gh" href="#"><img src="<%=require('./images/gh.png').default%>" alt="Иконка GH"></a>
-      <a class="link footer_link footer_link__fb" href="#"><img src="<%=require('./images/fb.png').default%>" alt="Иконка FB"></a>
+      <a class="link footer_link footer_link__gh" href="https://github.com/pad1a" target="_blank"><img src="<%=require('./images/gh.png').default%>" alt="Иконка GH"></a>
+      <a class="link footer_link footer_link__fb" href="https://www.facebook.com/maslov.online" target="_blank"><img src="<%=require('./images/fb.png').default%>" alt="Иконка FB"></a>
     </div>
   </section>
 </div>
