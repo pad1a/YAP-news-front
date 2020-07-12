@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.results__save {
+  margin-top: 62px;
+  margin-bottom: 62px;
+}
 .results_cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 400px);

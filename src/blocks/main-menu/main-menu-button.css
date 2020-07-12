@@ -16,7 +16,16 @@
   text-align: center;
   margin-right: 0;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
+
+.main_menu_button__auth__save {
+  border: 1px solid #1a1b22;
+  color: #1a1b22;
+}
+
 .main_menu_button__auth_image {
   width: 24px;
   height: 24px;
@@ -47,5 +56,8 @@
     display: flex;
     align-items: center;
     flex-direction: row;
+  }
+  .main_menu_button__auth__save {
+    color: #1a1b22;
   }
 }

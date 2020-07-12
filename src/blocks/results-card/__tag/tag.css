@@ -1,0 +1,20 @@
+.results-card__tag {
+  background: #fff;
+  box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
+  border-radius: 10px;
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  font-family: 'Roboto', Arial;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  padding: 8px 12px 8px 12px;
+}

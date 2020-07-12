@@ -7,9 +7,18 @@
   background-position: center;
 }
 
+.header__save {
+  background-image: none;
+  background-color: #fff;
+  min-height: auto;
+}
+
 @media screen and (max-width: 1440px) {
   .header {
     min-height: 400px;
+  }
+  .header__save {
+    min-height: auto;
   }
 }
 

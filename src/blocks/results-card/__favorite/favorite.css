@@ -12,9 +12,18 @@
   cursor: pointer;
 }
 
+.results-card__favorite-trash {
+  background-image: url('../../../images/trash.png');
+}
+
 .results-card__favorite:hover {
   background-image: url('../../../images/hover.svg');
 }
+
+.results-card__favorite-trash:hover {
+  background-image: url('../../../images/trash_black.png');
+}
+
 
 .results-card__favorite_marked {
   background-image: url('../../../images/marked.png');

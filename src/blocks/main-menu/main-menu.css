@@ -16,6 +16,10 @@
   color: #fff;
 }
 
+.main_menu_link__save {
+  color: #1a1b22;
+}
+
 @media screen and (max-width: 1440px) {
   .main_menu {
     height: 66px;

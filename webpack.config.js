@@ -8,7 +8,10 @@ const isDev = process.env.NODE_ENV === 'development';
 console.log('IS DEV:', isDev);
 
 module.exports = {
-  entry: { main: './src/index.js' },
+  entry: {
+    main: './src/index.js',
+    articles: './src/articles.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[chunkhash].js',
@@ -33,6 +36,15 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|ico|svg)$/,
         use: [
+          /*{
+            loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: './images',
+                useRelativePath: true,
+                esModule: false,
+              }
+          },*/
           'file-loader?name=./images/[name].[ext]',
           {
             loader: 'image-webpack-loader',
@@ -48,7 +60,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: '[name].[contenthash].css',
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
@@ -59,11 +71,22 @@ module.exports = {
       canPrint: true,
     }),
     new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
       template: './src/index.html',
+      filename: 'index.html',
+      chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: './src/articles.html',
+      filename: 'articles.html',
+      chunks: ['articles']
     }),
     new WebpackMd5Hash(),
-    // new webpack.DefinePlugin({
-    //    'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    // })
+    /*new webpack.DefinePlugin({
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+     })*/
   ],
 };

@@ -17,8 +17,16 @@
   background-image: url('../../images/menu.png');
 }
 
+.nav_burger__open__save {
+  background-image: url('../../images/menu_black.png');
+}
+
 .nav_burger__close {
   background-image: url('../../images/close.svg');
+  background-size: 20px;
+}
+.nav_burger__close__save {
+  background-image: url('../../images/close_black.png');
   background-size: 20px;
 }
 
@@ -31,6 +39,10 @@
   height: auto;
   background: #000;
   z-index: 1;
+}
+
+.nav-mobile__save {
+  background: #fff;
 }
 
 @media screen and (max-width: 1440px) {

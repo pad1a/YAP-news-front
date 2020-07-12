@@ -27,6 +27,10 @@ popupNewUserValidate.setEventListeners(document.querySelector('#name'));
 document.querySelector('.main_menu_button__auth').addEventListener('click', (event) => {
   popupAuthUser.open(event);
 });
+document.querySelector('.main_menu_button__auth_mobile').addEventListener('click', (event) => {
+  popupAuthUser.open(event);
+  viewMobileMenu.close(event);
+});
 document.querySelector('.popup__form_newuser-link').addEventListener('click', (event) => {
   popupAuthUser.close(event);
   popupNewUser.open(event);

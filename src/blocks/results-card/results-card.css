@@ -1,5 +1,6 @@
 @import url(./__auth-hint/auth-hint.css);
 @import url(./__favorite/favorite.css);
+@import url(./__tag/tag.css);
 
 .results-card {
   width: 400px;
@@ -110,6 +111,10 @@
     top: 16px;
     width: 150px;
     font-size: 8px;
+  }
+  .results-card__tag {
+    left: 16px;
+    top: 16px;
   }
 }
 
