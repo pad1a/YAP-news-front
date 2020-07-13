@@ -1,0 +1,29 @@
+.header {
+  min-height: 576px;
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../images/georgia-de-lotz.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header__save {
+  background-image: none;
+  background-color: #fff;
+  min-height: auto;
+}
+
+@media screen and (max-width: 1440px) {
+  .header {
+    min-height: 400px;
+  }
+  .header__save {
+    min-height: auto;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .header {
+    min-width: 288px;
+  }
+}

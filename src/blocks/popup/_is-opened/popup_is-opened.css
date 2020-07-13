@@ -1,0 +1,12 @@
+.popup.popup_is-opened {
+  display: flex;
+  z-index: 999;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .popup.popup_is-opened {
+    display: flex;
+    z-index: 999;
+    align-items: flex-end;
+  }
+}

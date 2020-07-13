@@ -1,0 +1,54 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts.css);
+@import url(../blocks/root/root.css);
+@import url(../blocks/search/search.css);
+@import url(../blocks/header/header.css);
+@import url(../blocks/head/head.css);
+@import url(../blocks/logo/logo.css);
+@import url(../blocks/nav/nav.css);
+@import url(../blocks/main-menu/main-menu.css);
+@import url(../blocks/main-menu/main-menu-button.css);
+@import url(../blocks/about-author/about-author.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/results/results.css);
+@import url(../blocks/results-card/results-card.css);
+
+body {
+  background-color: #fff;
+}
+
+.link, .link:active, .link:hover, .link:visited{
+  text-decoration: none;
+}
+
+.link.active {
+  border-bottom: 3px solid #fff;
+  height: 80px;
+  line-height: 80px;
+}
+
+.link.inactive {
+  color: #b6bcbf;
+}
+
+.nologin, .nodisplay {
+  display: none;
+}
+@media screen and (max-width: 1440px) {
+  .link.active {
+    line-height: 66px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .link.active {
+    border-bottom: none;
+    height: 80px;
+    line-height: 80px;
+  }
+}
+
+div {
+/*border: 1px solid red;*/
+}

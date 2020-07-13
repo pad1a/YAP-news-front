@@ -1,0 +1,16 @@
+@import url(./__section/root__section.css);
+
+.root {
+  background-color: #f5f6f7;
+  min-height: 100vh;
+  font-family: 'Roboto', Arial;
+  /*display: flex;
+  flex-direction: column;*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*@media screen and (max-width: 1024px) {
+  .root {
+  }
+}*/

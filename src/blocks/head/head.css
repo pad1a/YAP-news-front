@@ -1,0 +1,42 @@
+.head {
+  position: relative;
+  padding: 0 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  background: rgba(196, 196, 196, 0.01);
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+  margin-bottom: 80px;
+}
+
+.mobile-menu_is-opened {
+  background: #000;
+  z-index: 1;
+}
+
+.head__save {
+  box-shadow: inset 0px -1px 0px #D1D2D6;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1440px) {
+  .head {
+    padding: 0 40px;
+    margin-bottom: 38px;
+    height: 66px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .head {
+    padding: 0 16px;
+    margin-bottom: 30px;
+    height: 56px;
+    min-width: 288px;
+  }
+  .head__save {
+    margin-bottom: 8px;
+  }
+}
+
