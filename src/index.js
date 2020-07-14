@@ -1,15 +1,41 @@
 import './pages/index.css';
+import NewsApi from './scripts/api/news-api';
 import Popup from './scripts/popup.js';
 import FormValidator from './scripts/formvalidator.js';
 import MobileMenu from './scripts/mobile-menu';
+import NewsList from './scripts/components/newslist';
+import News from './scripts/components/news';
 
-// Пример обрезки текста новости. (сделать в класс и по всем селекторам!)
-const size = 75;
-const newsContent = document.querySelector('.results-card__text');
-const newsText = newsContent.innerHTML;
-if (newsText.length > size) {
-  newsContent.innerHTML = `${newsText.slice(0, size)} ...`;
-}
+const { configNews } = require('./scripts/constants/config');
+
+const newslist = new NewsList(
+  document.querySelector('.results_cards'),
+  (image, date, title, text, source, link) => {
+    const cardItem = new News(image, date, title, text, source, link);
+    cardItem.create();
+    return cardItem;
+  },
+  document.getElementById('noresults'),
+  document.getElementById('results_title'),
+  document.getElementById('results_cards'),
+  document.getElementById('show__button'),
+);
+
+// поиск по тегу
+document.forms.search.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const newstag = document.forms.search.elements.tag.value;
+  const newsapi = new NewsApi(configNews, newstag);
+  newsapi.getNews()
+    .then((data) => {
+      console.log('DATA', data);
+      newslist.render(data);
+    });
+});
+
+
+
+
 const viewMobileMenu = new MobileMenu(document.getElementById('head'), document.getElementById('nav-mobile'));
 const popupAuthUser = new Popup(document.getElementById('authuser'), document.forms.auth);
 const popupNewUser = new Popup(document.getElementById('newuser'), document.forms.new);
@@ -24,6 +50,7 @@ popupNewUserValidate.setEventListeners(document.querySelector('#newemail'));
 popupNewUserValidate.setEventListeners(document.querySelector('#newpass'));
 popupNewUserValidate.setEventListeners(document.querySelector('#name'));
 
+//Слушатели
 document.querySelector('.main_menu_button__auth').addEventListener('click', (event) => {
   popupAuthUser.open(event);
 });

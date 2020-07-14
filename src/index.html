@@ -34,67 +34,34 @@
           <li class="main_menu_button main_menu_button__auth main_menu_button__auth_mobile"><span class="username">Авторизоваться</span><img class="main_menu_button__auth_image nologin" src="<%=require('./images/logout.png').default%>" alt="Logout"></li>
         </ul>
       </div>
-      <div class="search">
+      <div id="search" class="search">
         <h2 class="search_title">Что в мире творится?</h2>
         <h3 class="search_text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h3>
-        <form class="search_form" name="new-search">
+        <form class="search_form" name="search">
           <div class="input-container search_form_input-container">
-            <input id="inputtag" type="text" name="tag" class="search__input search__input_type_tag error" placeholder="Введите тему новости">
+            <input id="inputtag" type="text" name="tag" class="search__input search__input_type_tag error" placeholder="Введите тему новости" required>
             <button type="submit" class="button search__button">Искать</button>
+            <span id="error-inputtag" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
         </form>
       </div>
     </header>
     <section class="results root__section">
       <div class="results_info">
-        <h2 class="results_title">Результаты поиска</h2>
-        <div class="results__preloader nodisplay">
+        <h2 id="results_title" class="results_title nodisplay">Результаты поиска</h2>
+        <div id="preloader" class="results__preloader nodisplay">
           <i class="results__preloader_circle-preloader"></i>
           <p class="results__preloader_text">Идет поиск новостей...</p>
         </div>
-        <div class="results__noresults nodisplay">
+        <div id="noresults" class="results__noresults nodisplay">
           <img class="results__noresults_image" src="<%=require('./images/not-found.png').default%>" alt="Нет результатов">
           <h3 class="results__noresults_title">Ничего не найдено</h3>
           <p class="results__noresults_text">К сожалению по вашему запросу ничего не найдено.</p>
         </div>
       </div>
-      <div class="results_cards">
-        <div class="results-card">
-          <div class="results-card__image">
-            <img class="results-card__image-content" src="<%=require('./images/image_08.png').default%>" alt="Изображение новости">
-            <div class="results-card__auth-hint nodisplay"></div>
-            <div class="results-card__favorite"></div>
-          </div>
-          <span class="results-card__date">2 августа, 2019</span>
-          <h3 class="results-card__title">Национальное достояние – парки</h3>
-          <p class="results-card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-          <a class="results-card__source link" href="lenta.ru" target="_blank">Лента.ру</a>
-        </div>
-        <div class="results-card">
-          <div class="results-card__image">
-            <img class="results-card__image-content" src="<%=require('./images/image_07.png').default%>" alt="Изображение новости">
-            <div class="results-card__auth-hint nodisplay"></div>
-            <div class="results-card__favorite results-card__favorite_marked"></div>
-          </div>
-          <span class="results-card__date">2 августа, 2019</span>
-          <h3 class="results-card__title">Лесные огоньки: история одной фотографии</h3>
-          <p class="results-card__text">Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного
-            из местных чудес природы.</p>
-          <a class="results-card__source link" href="meduza.io" target="_blank">Медуза</a>
-        </div>
-        <div class="results-card">
-          <div class="results-card__image">
-            <img class="results-card__image-content" src="<%=require('./images/image_04.png').default%>" alt="Изображение новости">
-            <div class="results-card__auth-hint">Войдите, чтобы сохранять статьи</div>
-            <div class="results-card__favorite"></div>
-          </div>
-          <span class="results-card__date">2 августа, 2019</span>
-          <h3 class="results-card__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h3>
-          <p class="results-card__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...</p>
-          <a class="results-card__source link" href="ria.ru" target="_blank">Риа</a>
-        </div>
+      <div id="results_cards" class="results_cards">
       </div>
-      <button type="button" class="button show__button">Показать еще</button>
+      <button id="show__button" type="button" class="button show__button nodisplay">Показать еще</button>
 
     </section>
     <section class="about-author root__section">
