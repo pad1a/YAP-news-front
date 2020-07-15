@@ -51,13 +51,17 @@ export default class MainApi {
   }
 
   _handleResult(res) {
-    console.log('pop result = ', this.popupNewUser);
     if (res.ok) {
       console.log('OK', res.json());
+      this.popupNewUser.close();
+      this.popupSuccess.open();
       return res.json();
     } else {
+      console.log(this.popupNewUser);
+      document.getElementById('error-up-button_new').classList.add('popup__error-message_visible');
       console.log("Ошибка HTTP: " + res.status);
-      this.popupNewUser.close();
+      console.log(res.json());
+      // this.popupNewUser.close();
       return {error: res.status};
     }
   }
