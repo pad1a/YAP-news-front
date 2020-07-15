@@ -53,14 +53,21 @@ export default class MainApi {
   _handleResult(res) {
     if (res.ok) {
       console.log('OK', res.json());
+      sessionStorage.setItem('auth', '1');
       this.popupNewUser.close();
       this.popupSuccess.open();
       return res.json();
     } else {
-      console.log(this.popupNewUser);
-      document.getElementById('error-up-button_new').classList.add('popup__error-message_visible');
-      console.log("Ошибка HTTP: " + res.status);
-      console.log(res.json());
+      //console.log(this.popupNewUser);
+      if (res.status === 409) {
+        const errElem = document.getElementById('error-up-button_new')
+        errElem.classList.add('popup__error-message_visible');
+        errElem.textContent = 'Такой Email зарегистрирован';
+
+      }
+
+      //console.log("Ошибка HTTP: " + res.status);
+      //console.log(res.json());
       // this.popupNewUser.close();
       return {error: res.status};
     }
