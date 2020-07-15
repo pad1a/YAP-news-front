@@ -8,14 +8,10 @@ export default class MainApi {
 
   // регистрация пользователя
   signup(email, pass, name) {
-    // return this._requestPostSignUp('/signup', 'POST', email, pass, name, popupClose);
-    // console.log(this.popupNewUser);
-    // console.log(this.popupSuccess);
-    return this._requestPostSignUp('/signup', 'POST', email, pass, name);
+    this._requestPostSignUp('/signup', 'POST', email, pass, name);
   }
 
   _requestPostSignUp(url, method, email, pass, name) {
-    console.log(this.popupNewUser);
     return fetch(
       this.config.apiUrl + url,
       {
@@ -27,7 +23,10 @@ export default class MainApi {
           name: name
         })
       })
-      .then(this._handleResult)
+      .then((data) => {
+        // console.log('data =', data);
+        this._handleResult(data);
+      })
       .catch(this._handleError);
   }
 
@@ -36,6 +35,7 @@ export default class MainApi {
   }
 
   _requestPostSignIn(url, method, email, pass) {
+    const pop = this.popupNewUser;
     return fetch(
       this.config.apiUrl + url,
       {
@@ -46,23 +46,19 @@ export default class MainApi {
           password: pass
         })
       })
-      .then(this._handleResult)
+      .then((data) => this._handleResult(data, pop))
       .catch(this._handleError);
   }
 
-  _popupOpen() {
-    console.log('test', this.popupNewUser);
-    // this.popupNewUser.close();
-    // this.popupSuccess.openSuccess();
-  }
-
   _handleResult(res) {
+    console.log('pop result = ', this.popupNewUser);
     if (res.ok) {
       console.log('OK', res.json());
       return res.json();
     } else {
-      this._popupOpen();
       console.log("Ошибка HTTP: " + res.status);
+      this.popupNewUser.close();
+      return {error: res.status};
     }
   }
 

@@ -19,3 +19,6 @@
 .input-container__invalid .popup__error-message {
     opacity: 1;
 }
+.popup__error-message_visible {
+  opacity: 1;
+}
