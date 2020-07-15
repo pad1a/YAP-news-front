@@ -1,5 +1,6 @@
 import './pages/index.css';
 import NewsApi from './scripts/api/news-api';
+import MainApi from './scripts/api/main-api';
 import Popup from './scripts/popup.js';
 import FormValidator from './scripts/formvalidator.js';
 import MobileMenu from './scripts/mobile-menu';
@@ -7,6 +8,18 @@ import NewsList from './scripts/components/newslist';
 import News from './scripts/components/news';
 
 const { configNews } = require('./scripts/constants/config');
+const { configMain } = require('./scripts/constants/config');
+
+
+const viewMobileMenu = new MobileMenu(document.getElementById('head'), document.getElementById('nav-mobile'));
+const popupAuthUser = new Popup(document.getElementById('authuser'), document.forms.auth);
+const popupNewUser = new Popup(document.getElementById('newuser'), document.forms.new);
+const popupSuccess = new Popup(document.getElementById('success'));
+
+
+const mainapi = new MainApi(configMain);
+
+
 
 const newslist = new NewsList(
   document.querySelector('.results_cards'),
@@ -20,6 +33,25 @@ const newslist = new NewsList(
   document.getElementById('results_cards'),
   document.getElementById('show__button'),
 );
+
+// регистрация
+document.forms.new.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const email = document.forms.new.email.value;
+  const pass = document.forms.new.pass.value;
+  const name = document.forms.new.name.value;
+  mainapi.signup(email, pass, name, popupNewUser.close(event), popupSuccess.open(event));
+  // mainapi.signup(email, pass, name, popupNewUser);
+});
+
+// авторизация
+document.forms.auth.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const email = document.forms.auth.email.value;
+  const pass = document.forms.auth.pass.value;
+  // mainapi.signup(email, pass, name, popupNewUser.close(event), popupSuccess.open(event));
+  mainapi.signin(email, pass);
+});
 
 // поиск по тегу
 document.forms.search.addEventListener('submit', (event) => {
@@ -36,10 +68,6 @@ document.forms.search.addEventListener('submit', (event) => {
 
 
 
-const viewMobileMenu = new MobileMenu(document.getElementById('head'), document.getElementById('nav-mobile'));
-const popupAuthUser = new Popup(document.getElementById('authuser'), document.forms.auth);
-const popupNewUser = new Popup(document.getElementById('newuser'), document.forms.new);
-const popupSuccess = new Popup(document.getElementById('success'));
 
 // Валидация полей
 const popupAuthUserValidate = new FormValidator(document.getElementById('authuser'));
@@ -73,3 +101,4 @@ document.querySelector('.popup__form_success-link').addEventListener('click', (e
 document.querySelector('.nav_burger__open').addEventListener('click', (event) => {
   viewMobileMenu.open(event);
 });
+

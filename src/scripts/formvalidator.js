@@ -15,7 +15,7 @@ export default class FormValidator {
       return false;
     }
 
-    if (!element.classList.contains('popup__input_type_email') && !this.inputLen(element)) {
+    if (!element.classList.contains('popup__input_type_email') && !element.classList.contains('popup__input_type_pass') && !this.inputLen(element)) {
       const errorMessage = 'Должно быть от 2 до 30 символов';
       errorElement.textContent = errorMessage;
       this.activateError(element);
@@ -24,6 +24,14 @@ export default class FormValidator {
     }
     if (element.classList.contains('popup__input_type_email') && !this.validateEmail(element)) {
       const errorMessage = 'Неправильный формат email';
+      errorElement.textContent = errorMessage;
+      this.activateError(element);
+      this.setSubmitButtonState(element);
+      return false;
+    }
+
+    if (element.classList.contains('popup__input_type_pass') && !this.inputLenPass(element)) {
+      const errorMessage = 'Должно быть от 8 до 30 символов';
       errorElement.textContent = errorMessage;
       this.activateError(element);
       this.setSubmitButtonState(element);
@@ -57,6 +65,14 @@ export default class FormValidator {
   // метод проверки на длинну поля
   inputLen(element) {
     if (element.value.length === 1 || element.value.length > 30) {
+      return false;
+    }
+    this.resetError(element);
+    return true;
+  }
+
+  inputLenPass(element) {
+    if (element.value.length < 8 || element.value.length > 30) {
       return false;
     }
     this.resetError(element);

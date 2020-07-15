@@ -99,7 +99,7 @@
             <input id="pass" type="text" name="pass" class="popup__input popup__input_type_pass error" placeholder="Введите пароль" required>
             <span id="error-pass" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
-          <button type="button" class="button popup__button">Войти</button>
+          <button type="submit" class="button popup__button">Войти</button>
           <p class="popup__form_text">или<span class="popup__form_newuser-link"> Зарегистрироваться</span></p>
         </form>
       </div>
@@ -113,20 +113,20 @@
         <form class="popup__form" name="new">
           <div class="input-container">
             <span class="popup__input-hint">Email</span>
-            <input id="newemail" type="text" name="email" class="popup__input popup__input_type_email error" placeholder="Введите почту" required>
+            <input id="newemail" type="text" name="email" class="popup__input popup__input_type_email error" placeholder="Введите почту" required value="test@test.ru">
             <span id="error-newemail" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
           <div class="input-container">
             <span class="popup__input-hint">Пароль</span>
-            <input id="newpass" type="text" name="pass" class="popup__input popup__input_type_pass error" placeholder="Введите пароль" required>
+            <input id="newpass" type="text" name="pass" class="popup__input popup__input_type_pass error" placeholder="Введите пароль" required value="12345678">
             <span id="error-newpass" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
           <div class="input-container">
             <span class="popup__input-hint">Имя</span>
-            <input id="name" type="text" name="name" class="popup__input popup__input_type_name error" placeholder="Имя" required>
+            <input id="name" type="text" name="name" class="popup__input popup__input_type_name error" placeholder="Имя" required value="test">
             <span id="error-name" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
-          <button type="button" class="button popup__button">Зарегистрироваться</button>
+          <button type="submit" class="button popup__button">Зарегистрироваться</button>
           <p class="popup__form_text">или<span class="popup__form_auth-link"> Войти</span></p>
         </form>
       </div>
