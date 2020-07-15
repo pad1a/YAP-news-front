@@ -24,6 +24,12 @@ export default class Popup {
     popUpButton.classList.add('popup__button_disabled');
   }
 
+  openSuccess() {
+    this.setEventListeners();
+    this.popupElement.classList.contains('popup__content__success');
+    this.popupElement.classList.add('popup_is-opened');
+  }
+
   close() {
     this.popupElement.classList.remove('popup_is-opened');
     if (this.formElement) {

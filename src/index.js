@@ -10,29 +10,12 @@ import News from './scripts/components/news';
 const { configNews } = require('./scripts/constants/config');
 const { configMain } = require('./scripts/constants/config');
 
-
 const viewMobileMenu = new MobileMenu(document.getElementById('head'), document.getElementById('nav-mobile'));
 const popupAuthUser = new Popup(document.getElementById('authuser'), document.forms.auth);
 const popupNewUser = new Popup(document.getElementById('newuser'), document.forms.new);
 const popupSuccess = new Popup(document.getElementById('success'));
 
-
-const mainapi = new MainApi(configMain);
-
-
-
-const newslist = new NewsList(
-  document.querySelector('.results_cards'),
-  (image, date, title, text, source, link) => {
-    const cardItem = new News(image, date, title, text, source, link);
-    cardItem.create();
-    return cardItem;
-  },
-  document.getElementById('noresults'),
-  document.getElementById('results_title'),
-  document.getElementById('results_cards'),
-  document.getElementById('show__button'),
-);
+const mainapi = new MainApi(configMain, popupNewUser, popupSuccess);
 
 // регистрация
 document.forms.new.addEventListener('submit', (event) => {
@@ -40,8 +23,8 @@ document.forms.new.addEventListener('submit', (event) => {
   const email = document.forms.new.email.value;
   const pass = document.forms.new.pass.value;
   const name = document.forms.new.name.value;
-  mainapi.signup(email, pass, name, popupNewUser.close(event), popupSuccess.open(event));
-  // mainapi.signup(email, pass, name, popupNewUser);
+  // mainapi.signup(email, pass, name, popupNewUser.close(event), popupSuccess.open(event));
+  mainapi.signup(email, pass, name);
 });
 
 // авторизация
@@ -52,31 +35,6 @@ document.forms.auth.addEventListener('submit', (event) => {
   // mainapi.signup(email, pass, name, popupNewUser.close(event), popupSuccess.open(event));
   mainapi.signin(email, pass);
 });
-
-// поиск по тегу
-document.forms.search.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const newstag = document.forms.search.elements.tag.value;
-  const newsapi = new NewsApi(configNews, newstag);
-  newsapi.getNews()
-    .then((data) => {
-      console.log('DATA', data);
-      newslist.render(data);
-    });
-});
-
-
-
-
-
-// Валидация полей
-const popupAuthUserValidate = new FormValidator(document.getElementById('authuser'));
-popupAuthUserValidate.setEventListeners(document.querySelector('#email'));
-popupAuthUserValidate.setEventListeners(document.querySelector('#pass'));
-const popupNewUserValidate = new FormValidator(document.getElementById('newuser'));
-popupNewUserValidate.setEventListeners(document.querySelector('#newemail'));
-popupNewUserValidate.setEventListeners(document.querySelector('#newpass'));
-popupNewUserValidate.setEventListeners(document.querySelector('#name'));
 
 //Слушатели
 document.querySelector('.main_menu_button__auth').addEventListener('click', (event) => {
@@ -102,3 +60,39 @@ document.querySelector('.nav_burger__open').addEventListener('click', (event) =>
   viewMobileMenu.open(event);
 });
 
+// Валидация полей
+const popupAuthUserValidate = new FormValidator(document.getElementById('authuser'));
+popupAuthUserValidate.setEventListeners(document.querySelector('#email'));
+popupAuthUserValidate.setEventListeners(document.querySelector('#pass'));
+const popupNewUserValidate = new FormValidator(document.getElementById('newuser'));
+popupNewUserValidate.setEventListeners(document.querySelector('#newemail'));
+popupNewUserValidate.setEventListeners(document.querySelector('#newpass'));
+popupNewUserValidate.setEventListeners(document.querySelector('#name'));
+
+// NEWS
+// отрисовка карточек
+const newslist = new NewsList(
+  document.querySelector('.results_cards'),
+  (image, date, title, text, source, link) => {
+    const cardItem = new News(image, date, title, text, source, link);
+    cardItem.create();
+    return cardItem;
+  },
+  document.getElementById('noresults'),
+  document.getElementById('results_title'),
+  document.getElementById('results_cards'),
+  document.getElementById('show__button'),
+);
+
+// поиск по тегу при клике на поиск
+document.forms.search.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const newstag = document.forms.search.elements.tag.value;
+  const newsapi = new NewsApi(configNews, newstag);
+  newsapi.getNews()
+    .then((data) => {
+      console.log('DATA', data);
+      newslist.render(data);
+    });
+});
+// .\NEWS

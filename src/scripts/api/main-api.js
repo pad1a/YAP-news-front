@@ -1,29 +1,21 @@
 export default class MainApi {
-  constructor(config) {
+  constructor(config, popupNewUser, popupSuccess) {
     this.config = config;
     this.headers = config.headers;
+    this.popupNewUser = popupNewUser;
+    this.popupSuccess = popupSuccess;
   }
 
   // регистрация пользователя
-  signup(email, pass, name, popupClose) {
-    return this._requestPostSignUp('/signup', 'POST', email, pass, name, popupClose);
+  signup(email, pass, name) {
+    // return this._requestPostSignUp('/signup', 'POST', email, pass, name, popupClose);
+    // console.log(this.popupNewUser);
+    // console.log(this.popupSuccess);
+    return this._requestPostSignUp('/signup', 'POST', email, pass, name);
   }
 
-  signin(email, pass) {
-    return this._requestPostSignIn('/signin', 'POST', email, pass);
-  }
-
-  getArticles() {
-    return this._getArticles('GET');
-  }
-
-  _getArticles() {
-    return fetch(this.config.apiUrl + '/articles')
-      .then(this._handleResult)
-      .catch(this._handleError);
-  }
-
-  _requestPostSignUp(url, method, email, pass, name, popupClose) {
+  _requestPostSignUp(url, method, email, pass, name) {
+    console.log(this.popupNewUser);
     return fetch(
       this.config.apiUrl + url,
       {
@@ -35,8 +27,12 @@ export default class MainApi {
           name: name
         })
       })
-      .then(this._handleResult(popupClose))
+      .then(this._handleResult)
       .catch(this._handleError);
+  }
+
+  signin(email, pass) {
+    return this._requestPostSignIn('/signin', 'POST', email, pass);
   }
 
   _requestPostSignIn(url, method, email, pass) {
@@ -54,11 +50,19 @@ export default class MainApi {
       .catch(this._handleError);
   }
 
-  _handleResult(res, popupClose) {
+  _popupOpen() {
+    console.log('test', this.popupNewUser);
+    // this.popupNewUser.close();
+    // this.popupSuccess.openSuccess();
+  }
+
+  _handleResult(res) {
     if (res.ok) {
-      console.log('OK');
-      //popupClose.open();
+      console.log('OK', res.json());
       return res.json();
+    } else {
+      this._popupOpen();
+      console.log("Ошибка HTTP: " + res.status);
     }
   }
 
@@ -66,6 +70,18 @@ export default class MainApi {
     console.log('Error:', e);
     return { error: e };
   }
+
+  /*getArticles() {
+    return this._getArticles('GET');
+  }
+
+  _getArticles() {
+    return fetch(this.config.apiUrl + '/articles')
+      .then(this._handleResult)
+      .catch(this._handleError);
+  }
+
+   */
 
   /*
   // авторизация пользователя
