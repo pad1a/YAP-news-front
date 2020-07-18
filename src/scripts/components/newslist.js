@@ -23,6 +23,7 @@ export default class NewsList {
       this.noresblock.classList.add('nodisplay');
       this.restitle.classList.remove('nodisplay');
       this.showbutton.classList.remove('nodisplay');
+      this.rescards.textContent = '';
     for (let i = 0; i < initCards.length; i++) {
       this.addCard(
         this.createcarditem(

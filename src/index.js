@@ -7,6 +7,7 @@ import MobileMenu from './scripts/mobile-menu';
 import NewsList from './scripts/components/newslist';
 import News from './scripts/components/news';
 
+console.log(document.cookie);
 const { configNews } = require('./scripts/constants/config');
 const { configMain } = require('./scripts/constants/config');
 
@@ -15,7 +16,7 @@ const popupAuthUser = new Popup(document.getElementById('authuser'), document.fo
 const popupNewUser = new Popup(document.getElementById('newuser'), document.forms.new);
 const popupSuccess = new Popup(document.getElementById('success'));
 
-const mainapi = new MainApi(configMain, popupNewUser, popupSuccess);
+const mainapi = new MainApi(configMain, popupNewUser, popupSuccess, popupAuthUser);
 
 // регистрация
 document.forms.new.addEventListener('submit', (event) => {

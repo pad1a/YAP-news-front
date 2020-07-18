@@ -23,7 +23,8 @@
           <ul class="main_menu">
             <li class="main_menu_button"><a href="./index.html" class="link main_menu_link active">Главная</a></li>
             <li class="main_menu_button main_menu_button__save nologin"><a href="articles.html" class="link main_menu_link inactive">Сохраненные статьи</a></li>
-            <li class="main_menu_button main_menu_button__auth">Авторизоваться</li>
+            <li class="main_menu_button main_menu_button__auth"><span class="username nologin">Грета</span><img class="main_menu_button__auth_image nologin" src="<%=require('./images/logout_black.png').default%>" alt="Logout">Авторизоваться</li>
+            <!--li class="main_menu_button main_menu_button__auth">Авторизоваться</li-->
           </ul>
         </div>
       </div>
@@ -99,6 +100,7 @@
             <input id="pass" type="text" name="pass" class="popup__input popup__input_type_pass error" placeholder="Введите пароль" required>
             <span id="error-pass" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
+          <span id="error-up-button_auth" class="popup__error-message popup__error-message_hide"></span>
           <button type="submit" class="button popup__button">Войти</button>
           <p class="popup__form_text">или<span class="popup__form_newuser-link"> Зарегистрироваться</span></p>
         </form>
@@ -126,7 +128,7 @@
             <input id="name" type="text" name="name" class="popup__input popup__input_type_name error" placeholder="Имя" required value="test">
             <span id="error-name" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
-          <span id="error-up-button_new" class="popup__error-message popup__error-message_hide">Ошибка</span>
+          <span id="error-up-button_new" class="popup__error-message popup__error-message_hide"></span>
           <button type="submit" class="button popup__button">Зарегистрироваться</button>
           <p class="popup__form_text">или<span class="popup__form_auth-link"> Войти</span></p>
         </form>

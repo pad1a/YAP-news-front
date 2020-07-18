@@ -1,9 +1,10 @@
 export default class MainApi {
-  constructor(config, popupNewUser, popupSuccess) {
+  constructor(config, popupNewUser, popupSuccess, popupAuth) {
     this.config = config;
     this.headers = config.headers;
     this.popupNewUser = popupNewUser;
     this.popupSuccess = popupSuccess;
+    this.popupAuth = popupAuth;
   }
 
   // регистрация пользователя
@@ -41,6 +42,7 @@ export default class MainApi {
       {
         method: method,
         headers: this.headers,
+        //credentials: 'include',
         body: JSON.stringify({
           email: email,
           password: pass
@@ -51,24 +53,33 @@ export default class MainApi {
   }
 
   _handleResult(res) {
+    const popupAuth = document.getElementById('authuser');
+    const popupNew = document.getElementById('newuser');
+    const errElemNew = document.getElementById('error-up-button_new');
+    const errElemAuth = document.getElementById('error-up-button_auth');
     if (res.ok) {
-      console.log('OK', res.json());
+      console.log('OK');
+      //console.log(localStorage.getItem('jwt'));
       sessionStorage.setItem('auth', '1');
-      this.popupNewUser.close();
-      this.popupSuccess.open();
+      if (popupAuth.classList.contains('popup_is-opened')) {
+        this.popupAuth.close();
+        this.getUser();
+      }
+      if (popupNew.classList.contains('popup_is-opened')) {
+        this.popupNewUser.close();
+        this.popupSuccess.openSuccess();
+      }
       return res.json();
     } else {
-      //console.log(this.popupNewUser);
       if (res.status === 409) {
-        const errElem = document.getElementById('error-up-button_new')
-        errElem.classList.add('popup__error-message_visible');
-        errElem.textContent = 'Такой Email зарегистрирован';
-
+        errElemNew.classList.add('popup__error-message_visible');
+        errElemNew.textContent = 'Такой Email зарегистрирован';
       }
-
-      //console.log("Ошибка HTTP: " + res.status);
-      //console.log(res.json());
-      // this.popupNewUser.close();
+      if (res.status === 401 || res.status === 400) {
+        console.log(errElemAuth);
+        errElemAuth.classList.add('popup__error-message_visible');
+        errElemAuth.textContent = 'Неверный Email или пароль';
+      }
       return {error: res.status};
     }
   }
@@ -76,6 +87,28 @@ export default class MainApi {
   _handleError(e) {
     console.log('Error:', e);
     return { error: e };
+  }
+
+  getUser() {
+  this._getUser('/users/me','GET');
+  }
+
+  _getUser(url, method) {
+    return fetch(this.config.apiUrl + url, {
+      method: method,
+      //credentials: 'same-origin',
+    })
+      .then(this._handleResultT)
+      .catch(this._handleError);
+  }
+
+  _handleResultT(res) {
+    if (res.ok) {
+      console.log('OK');
+      return res.json();
+    } else {
+      return {error: res.status};
+    }
   }
 
   /*getArticles() {
