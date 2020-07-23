@@ -49,6 +49,10 @@ body {
   }
 }
 
+.main .results-card__tag {
+  display: none;
+}
+
 div {
 /*border: 1px solid red;*/
 }

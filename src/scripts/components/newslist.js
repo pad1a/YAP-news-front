@@ -8,6 +8,7 @@ export default class NewsList {
     this.restitle = restitle;
     this.rescards = rescards;
     this.showbutton = showbutton;
+    // this.mainapi = mainapi;
 
   }
 
@@ -34,9 +35,25 @@ export default class NewsList {
     }
   }
 
+  renderSaveNews(SaveNews) {
+    const initCards = SaveNews.data;
+      for (let i = 0; i < initCards.length; i++) {
+        this.addCardSave(
+          this.createcarditem(
+            initCards[i].image, initCards[i].date, initCards[i].title, initCards[i].text, initCards[i].source, initCards[i].link, initCards[i].keyword, SaveNews.data[i]._id,
+          ),
+        );
+      }
+    }
+
   addCard(cardItem) {
-    //cardItem.setEventListeners('.place-card__like-icon', cardItem.like);
-    //cardItem.setEventListeners('.place-card__image', cardItem.bigImage);
+    cardItem.setEventListeners('#add_button', cardItem.add);
+    this.massive.push(cardItem);
+    this.container.appendChild(cardItem.cardElement);
+  }
+
+  addCardSave(cardItem) {
+    cardItem.setEventListeners('#del_button', cardItem.remove);
     this.massive.push(cardItem);
     this.container.appendChild(cardItem.cardElement);
   }

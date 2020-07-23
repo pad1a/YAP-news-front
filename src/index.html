@@ -23,16 +23,17 @@
           <ul class="main_menu">
             <li class="main_menu_button"><a href="./index.html" class="link main_menu_link active">Главная</a></li>
             <li class="main_menu_button main_menu_button__save nologin"><a href="articles.html" class="link main_menu_link inactive">Сохраненные статьи</a></li>
-            <li class="main_menu_button main_menu_button__auth"><span class="username nologin">Грета</span><img class="main_menu_button__auth_image nologin" src="<%=require('./images/logout_black.png').default%>" alt="Logout">Авторизоваться</li>
-            <!--li class="main_menu_button main_menu_button__auth">Авторизоваться</li-->
+            <li class="main_menu_button main_menu_button__auth signin open_auth">Авторизоваться</li>
+            <li class="main_menu_button main_menu_button__auth signout nologin"><span class="username"></span><img class="main_menu_button__auth_image nologin" src="<%=require('./images/logout_black.png').default%>" alt="Logout"></li>
           </ul>
         </div>
       </div>
       <div id="nav-mobile" class="nav-mobile">
         <ul class="main_menu__mobile">
           <li class="main_menu_button"><a href="./index.html" class="link main_menu_link active">Главная</a></li>
-          <li class="main_menu_button main_menu_button__save"><a href="./articles.html" class="link main_menu_link inactive">Сохраненные статьи</a></li>
-          <li class="main_menu_button main_menu_button__auth main_menu_button__auth_mobile"><span class="username">Авторизоваться</span><img class="main_menu_button__auth_image nologin" src="<%=require('./images/logout.png').default%>" alt="Logout"></li>
+          <li class="main_menu_button main_menu_button__save nologin"><a href="./articles.html" class="link main_menu_link inactive">Сохраненные статьи</a></li>
+          <li class="main_menu_button main_menu_button__auth open_auth_mobile main_menu_button__auth_mobile signin open_auth">Авторизоваться</li>
+          <li class="main_menu_button main_menu_button__auth open_auth_mobile main_menu_button__auth_mobile signout nologin"><span class="username"></span><img class="main_menu_button__auth_image nologin" src="<%=require('./images/logout.png').default%>" alt="Logout"></li>
         </ul>
       </div>
       <div id="search" class="search">
@@ -60,7 +61,7 @@
           <p class="results__noresults_text">К сожалению по вашему запросу ничего не найдено.</p>
         </div>
       </div>
-      <div id="results_cards" class="results_cards">
+      <div id="results_cards" class="results_cards main">
       </div>
       <button id="show__button" type="button" class="button show__button nodisplay">Показать еще</button>
 
@@ -115,17 +116,17 @@
         <form class="popup__form" name="new">
           <div class="input-container">
             <span class="popup__input-hint">Email</span>
-            <input id="newemail" type="text" name="email" class="popup__input popup__input_type_email error" placeholder="Введите почту" required value="test@test.ru">
+            <input id="newemail" type="text" name="email" class="popup__input popup__input_type_email error" placeholder="Введите почту" required value="">
             <span id="error-newemail" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
           <div class="input-container">
             <span class="popup__input-hint">Пароль</span>
-            <input id="newpass" type="text" name="pass" class="popup__input popup__input_type_pass error" placeholder="Введите пароль" required value="12345678">
+            <input id="newpass" type="text" name="pass" class="popup__input popup__input_type_pass error" placeholder="Введите пароль" required value="">
             <span id="error-newpass" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
           <div class="input-container">
             <span class="popup__input-hint">Имя</span>
-            <input id="name" type="text" name="name" class="popup__input popup__input_type_name error" placeholder="Имя" required value="test">
+            <input id="name" type="text" name="name" class="popup__input popup__input_type_name error" placeholder="Имя" required value="">
             <span id="error-name" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
           <span id="error-up-button_new" class="popup__error-message popup__error-message_hide"></span>
