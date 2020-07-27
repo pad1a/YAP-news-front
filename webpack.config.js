@@ -36,7 +36,7 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|ico|svg)$/,
         use: [
-          /*{
+          /* {
             loader: 'file-loader',
               options: {
                 name: '[name].[ext]',
@@ -44,7 +44,7 @@ module.exports = {
                 useRelativePath: true,
                 esModule: false,
               }
-          },*/
+          }, */
           'file-loader?name=./images/[name].[ext]',
           {
             loader: 'image-webpack-loader',
@@ -75,18 +75,18 @@ module.exports = {
       hash: true,
       template: './src/index.html',
       filename: 'index.html',
-      chunks: ['main']
+      chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
       template: './src/articles.html',
       filename: 'articles.html',
-      chunks: ['articles']
+      chunks: ['articles'],
     }),
     new WebpackMd5Hash(),
-    /*new webpack.DefinePlugin({
+    /* new webpack.DefinePlugin({
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-     })*/
+     }) */
   ],
 };

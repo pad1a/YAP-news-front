@@ -20,25 +20,45 @@ const newslist = new NewsList(
     const cardItem = new News(image, date, title, text, source, link, keyword, mainapi, id);
     cardItem.createSave();
     return cardItem;
-  },null,null,null,null,
+  }, null, null, null, null,
 );
 
 mainapi.getUser();
 
 mainapi.getArticles()
   .then((data) => {
-    const newsnum = document.querySelector('.search_text__num');
+    const newssum = document.querySelector('.search_text__num');
     const newstag = document.querySelector('.search_text__tag');
-    newsnum.textContent = data.data.length;
-    newstag.textContent = data.data[0].keyword;
-    // console.log(data.data[0]._id);
-    // console.log(data);
+    const newstags = document.querySelector('.search_text__numtag');
+    const keywords = [];
+    for (let i = 0; i < data.data.length; i++) {
+      keywords[i] = data.data[i].keyword;
+    }
+    const resultReduce = keywords.reduce((acc, cur) => {
+      if (!acc.hash[cur]) {
+        acc.hash[cur] = { [cur]: 1 };
+        acc.map.set(acc.hash[cur], 1);
+        acc.result.push(acc.hash[cur]);
+      } else {
+        acc.hash[cur][cur] += 1;
+        acc.map.set(acc.hash[cur], acc.hash[cur][cur]);
+      }
+      return acc;
+    }, {
+      hash: {},
+      map: new Map(),
+      result: [],
+    });
+    const result = resultReduce.result.sort((a, b) => resultReduce.map.get(b) - resultReduce.map.get(a));
+    const tagOne = Object.keys(result[0]);
+    const tagTwo = Object.keys(result[1]);
+    newssum.textContent = data.data.length;
+    newstag.textContent = `${tagOne[0]}, ${tagTwo[0]}`;
+    newstags.textContent = result.length - 2;
     newslist.renderSaveNews(data);
   });
-
 
 
 document.querySelector('.nav_burger__open').addEventListener('click', (event) => {
   viewMobileMenu.open(event);
 });
-

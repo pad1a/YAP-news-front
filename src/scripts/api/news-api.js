@@ -9,7 +9,7 @@ export default class NewsApi {
   }
 
   _request() {
-    return fetch(this.config.reqNewsString + 'q=' + this.newstag + this.config.apiKey)
+    return fetch(`${this.config.reqNewsString}q=${this.newstag}${this.config.apiKey}`)
       .then(this._handleResult)
       .catch(this._handleError);
   }

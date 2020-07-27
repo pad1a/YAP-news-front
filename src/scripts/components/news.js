@@ -42,7 +42,7 @@ export default class News {
     // дата
     const dateElement = document.createElement('span');
     dateElement.classList.add('results-card__date');
-    dateElement.textContent = this.date.slice(0,10);
+    dateElement.textContent = this.date.slice(0, 10);
     // тайтл
     const titleElement = document.createElement('h3');
     titleElement.classList.add('results-card__title');
@@ -116,7 +116,7 @@ export default class News {
     // дата
     const dateElement = document.createElement('span');
     dateElement.classList.add('results-card__date');
-    dateElement.textContent = this.date.slice(0,10);
+    dateElement.textContent = this.date.slice(0, 10);
     // тайтл
     const titleElement = document.createElement('h3');
     titleElement.classList.add('results-card__title');
@@ -155,7 +155,6 @@ export default class News {
     cardContainer.appendChild(tagElement);
     this.cardElement = cardContainer;
     return cardContainer;
-
   }
 
   setEventListeners(element, event) {
@@ -166,12 +165,10 @@ export default class News {
 
   add(event) {
     const newstag = document.forms.search.elements.tag.value;
-    // console.log(this.image, this.date, this.title, this.text, this.source, this.link, newstag);
     this.mainapi.createNews(newstag, this.title, this.text, this.date, this.source, this.link, this.image);
   }
 
   remove(event) {
-    // console.log(this.id);
     const tItem = event.target.closest('.results-card');
     const tContainer = event.target.closest('.results_cards');
     const newsnumEl = document.querySelector('.search_text__num');
@@ -180,5 +177,4 @@ export default class News {
     tContainer.removeChild(tItem);
     this.mainapi.removeNews(this.id);
   }
-
 }

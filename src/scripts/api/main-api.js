@@ -12,18 +12,20 @@ export default class MainApi {
   signup(email, pass, name) {
     this._requestPostSignUp('/signup', 'POST', email, pass, name);
   }
+
   _requestPostSignUp(url, method, email, pass, name) {
     return fetch(
       this.config.apiUrl + url,
       {
-        method: method,
+        method,
         headers: this.headers,
         body: JSON.stringify({
-          email: email,
+          email,
           password: pass,
-          name: name
-        })
-      })
+          name,
+        }),
+      },
+    )
       .then((data) => {
         this._handleResultSign(data);
       })
@@ -34,31 +36,34 @@ export default class MainApi {
   signin(email, pass) {
     return this._requestPostSignIn('/signin', 'POST', email, pass);
   }
+
   _requestPostSignIn(url, method, email, pass) {
     const pop = this.popupNewUser;
     return fetch(
       this.config.apiUrl + url,
       {
-        method: method,
+        method,
         headers: this.headers,
         credentials: 'include',
         withCredentials: true,
         body: JSON.stringify({
-          email: email,
-          password: pass
-        })
-      })
+          email,
+          password: pass,
+        }),
+      },
+    )
       .then((data) => this._handleResultSign(data, pop))
       .catch(this._handleError);
   }
 
   // Получение информации о пользователе
   getUser() {
-    this._getUser('/users/me','GET');
+    this._getUser('/users/me', 'GET');
   }
+
   _getUser(url, method) {
     return fetch(this.config.apiUrl + url, {
-      method: method,
+      method,
       credentials: 'include',
       withCredentials: true,
     })
@@ -68,7 +73,8 @@ export default class MainApi {
       })
       .catch(this._handleError);
   }
-  _setName(data){
+
+  _setName(data) {
     const username = data.name;
     const nameEl = document.getElementsByClassName('username');
     const button = document.querySelectorAll('.signin');
@@ -95,14 +101,15 @@ export default class MainApi {
 
   // Выходи пользователя
   signOut() {
-    this._signOut('/signout','POST');
+    this._signOut('/signout', 'GET');
   }
+
   _signOut(url, method) {
     sessionStorage.clear();
     document.cookie = 'jwt=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     window.location.reload();
     return fetch(this.config.apiUrl + url, {
-      method: method,
+      method,
       credentials: 'include',
       withCredentials: true,
     })
@@ -112,11 +119,12 @@ export default class MainApi {
 
   // Получение новостей пользователя
   getArticles() {
-    return this._getArticles('/articles','GET');
+    return this._getArticles('/articles', 'GET');
   }
+
   _getArticles(url, method) {
     return fetch(this.config.apiUrl + url, {
-      method: method,
+      method,
       credentials: 'include',
       withCredentials: true,
     })
@@ -126,11 +134,11 @@ export default class MainApi {
 
   // сохранение новости
   createNews(keyword, title, text, date, source, link, image) {
-    console.log(keyword, title, text, date, source, link, image);
     return this._postNews(keyword, title, text, date, source, link, image);
   }
+
   _postNews(keyword, title, text, date, source, link, image) {
-    const url = this.config.apiUrl + '/articles';
+    const url = `${this.config.apiUrl}/articles`;
     return fetch(
       url,
       {
@@ -139,13 +147,13 @@ export default class MainApi {
         withCredentials: true,
         headers: this.headers,
         body: JSON.stringify({
-          keyword: keyword,
-          title: title,
-          text: text,
-          date: date,
-          source: source,
-          link: link,
-          image: image,
+          keyword,
+          title,
+          text,
+          date,
+          source,
+          link,
+          image,
         }),
       },
     )
@@ -159,7 +167,7 @@ export default class MainApi {
   }
 
   _delNews(cardId) {
-    const url = this.config.apiUrl + '/articles/' + cardId;
+    const url = `${this.config.apiUrl}/articles/${cardId}`;
     return fetch(
       url,
       {
@@ -180,7 +188,6 @@ export default class MainApi {
     const errElemNew = document.getElementById('error-up-button_new');
     const errElemAuth = document.getElementById('error-up-button_auth');
     if (res.ok) {
-      // console.log('OK');
       sessionStorage.setItem('auth', '1');
       if (popupAuth.classList.contains('popup_is-opened')) {
         this.popupAuth.close();
@@ -193,49 +200,26 @@ export default class MainApi {
         this.popupSuccess.openSuccess();
       }
       return res.json();
-    } else {
-      if (res.status === 409) {
-        errElemNew.classList.add('popup__error-message_visible');
-        errElemNew.textContent = 'Такой Email зарегистрирован';
-      }
-      if (res.status === 401 || res.status === 400) {
-        console.log(errElemAuth);
-        errElemAuth.classList.add('popup__error-message_visible');
-        errElemAuth.textContent = 'Неверный Email или пароль';
-      }
-      return {error: res.status};
     }
+    if (res.status === 409) {
+      errElemNew.classList.add('popup__error-message_visible');
+      errElemNew.textContent = 'Такой Email зарегистрирован';
+    }
+    if (res.status === 401 || res.status === 400) {
+      errElemAuth.classList.add('popup__error-message_visible');
+      errElemAuth.textContent = 'Неверный Email или пароль';
+    }
+    return { error: res.status };
   }
+
   _handleResult(res) {
     if (res.ok) {
       return res.json();
-    } else {
-      return {error: res.status};
     }
+    return { error: res.status };
   }
+
   _handleError(e) {
-    console.log('Error:', e);
     return { error: e };
   }
-
-
-  /*
-
-  // собираем статьи пользователя
-  getArticles() {
-    return this._request('/cards', 'GET');
-  }
-
-
-
-
-
-  _request(url) {
-    return fetch(this.config.baseUrl + url, this.config)
-      .then(this._handleResult)
-      .catch(this._handleError);
-  }
-
-
-   */
 }

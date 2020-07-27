@@ -10,10 +10,8 @@ export default class ViewOrHide {
           el[i].classList.remove('nologin');
         }
       }
-    } else {
-      if (el.classList.contains('nologin')) {
-        el.classList.remove('nologin');
-      }
+    } else if (el.classList.contains('nologin')) {
+      el.classList.remove('nologin');
     }
   }
 }

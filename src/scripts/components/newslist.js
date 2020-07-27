@@ -9,13 +9,11 @@ export default class NewsList {
     this.rescards = rescards;
     this.showbutton = showbutton;
     // this.mainapi = mainapi;
-
   }
 
   render(initNews) {
     const initCards = initNews.articles;
     if (initNews.articles.length === 0) {
-      console.log(initNews.articles.length);
       this.noresblock.classList.remove('nodisplay');
       this.restitle.classList.add('nodisplay');
       this.showbutton.classList.add('nodisplay');
@@ -25,26 +23,26 @@ export default class NewsList {
       this.restitle.classList.remove('nodisplay');
       this.showbutton.classList.remove('nodisplay');
       this.rescards.textContent = '';
-    for (let i = 0; i < initCards.length; i++) {
-      this.addCard(
-        this.createcarditem(
-          initCards[i].urlToImage, initCards[i].publishedAt, initCards[i].title, initCards[i].description, initCards[i].source.name, initCards[i].url,
-        ),
-      );
-    }
+      for (let i = 0; i < initCards.length; i++) {
+        this.addCard(
+          this.createcarditem(
+            initCards[i].urlToImage, initCards[i].publishedAt, initCards[i].title, initCards[i].description, initCards[i].source.name, initCards[i].url,
+          ),
+        );
+      }
     }
   }
 
   renderSaveNews(SaveNews) {
     const initCards = SaveNews.data;
-      for (let i = 0; i < initCards.length; i++) {
-        this.addCardSave(
-          this.createcarditem(
-            initCards[i].image, initCards[i].date, initCards[i].title, initCards[i].text, initCards[i].source, initCards[i].link, initCards[i].keyword, SaveNews.data[i]._id,
-          ),
-        );
-      }
+    for (let i = 0; i < initCards.length; i++) {
+      this.addCardSave(
+        this.createcarditem(
+          initCards[i].image, initCards[i].date, initCards[i].title, initCards[i].text, initCards[i].source, initCards[i].link, initCards[i].keyword, SaveNews.data[i]._id,
+        ),
+      );
     }
+  }
 
   addCard(cardItem) {
     cardItem.setEventListeners('#add_button', cardItem.add);

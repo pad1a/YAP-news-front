@@ -65,7 +65,7 @@ document.forms.auth.addEventListener('submit', (event) => {
   mainapi.signin(email, pass);
 });
 
-//Слушатели
+// Слушатели
 document.querySelector('.open_auth').addEventListener('click', (event) => {
   popupAuthUser.open(event);
 });
@@ -121,9 +121,7 @@ document.forms.search.addEventListener('submit', (event) => {
   const newsapi = new NewsApi(configNews, newstag);
   newsapi.getNews()
     .then((data) => {
-      console.log('DATA', data);
       newslist.render(data);
     });
 });
 // .\NEWS
-
