@@ -8,7 +8,7 @@
   <meta name="description" content="Дипломная работа Яндекс Практикум. Поиск новостей">
   <meta name="author" content="Павел Маслов">
   <title>News Finder</title>
-  <link href="main.59e9124c740de32f59c6.css?8fe32a85559786773ddd" rel="stylesheet">
+  <link href="main.9e8b0520dc686eca9356.css?940eac51a6454d1da3c5" rel="stylesheet">
 </head>
 <body>
   <div class="root">
@@ -21,80 +21,49 @@
         <span class="nav_burger nav_burger__close nav_burger__hide"></span>
         <div class="nav">
           <ul class="main_menu">
-            <li class="main_menu_button"><a href="/" class="link main_menu_link active">Главная</a></li>
+            <li class="main_menu_button"><a href="./index.html" class="link main_menu_link active">Главная</a></li>
             <li class="main_menu_button main_menu_button__save nologin"><a href="articles.html" class="link main_menu_link inactive">Сохраненные статьи</a></li>
-            <li class="main_menu_button main_menu_button__auth">Авторизоваться</li>
+            <li class="main_menu_button main_menu_button__auth signin open_auth">Авторизоваться</li>
+            <li class="main_menu_button main_menu_button__auth signout nologin"><span class="username"></span><img class="main_menu_button__auth_image nologin" src="./images/logout_black.png" alt="Logout"></li>
           </ul>
         </div>
       </div>
       <div id="nav-mobile" class="nav-mobile">
         <ul class="main_menu__mobile">
-          <li class="main_menu_button"><a href="./" class="link main_menu_link active">Главная</a></li>
-          <li class="main_menu_button main_menu_button__save"><a href="./articles.html" class="link main_menu_link inactive">Сохраненные статьи</a></li>
-          <li class="main_menu_button main_menu_button__auth main_menu_button__auth_mobile"><span class="username">Авторизоваться</span><img class="main_menu_button__auth_image nologin" src="./images/logout.png" alt="Logout"></li>
+          <li class="main_menu_button"><a href="./index.html" class="link main_menu_link active">Главная</a></li>
+          <li class="main_menu_button main_menu_button__save nologin"><a href="./articles.html" class="link main_menu_link inactive">Сохраненные статьи</a></li>
+          <li class="main_menu_button main_menu_button__auth open_auth_mobile main_menu_button__auth_mobile signin open_auth">Авторизоваться</li>
+          <li class="main_menu_button main_menu_button__auth open_auth_mobile main_menu_button__auth_mobile signout nologin"><span class="username"></span><img class="main_menu_button__auth_image nologin" src="./images/logout.png" alt="Logout"></li>
         </ul>
       </div>
-      <div class="search">
+      <div id="search" class="search">
         <h2 class="search_title">Что в мире творится?</h2>
         <h3 class="search_text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h3>
-        <form class="search_form" name="new-search">
+        <form class="search_form" name="search">
           <div class="input-container search_form_input-container">
-            <input id="inputtag" type="text" name="tag" class="search__input search__input_type_tag error" placeholder="Введите тему новости">
+            <input id="inputtag" type="text" name="tag" class="search__input search__input_type_tag error" placeholder="Введите тему новости" required>
             <button type="submit" class="button search__button">Искать</button>
+            <span id="error-inputtag" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
         </form>
       </div>
     </header>
     <section class="results root__section">
       <div class="results_info">
-        <h2 class="results_title">Результаты поиска</h2>
-        <div class="results__preloader nodisplay">
+        <h2 id="results_title" class="results_title nodisplay">Результаты поиска</h2>
+        <div id="preloader" class="results__preloader nodisplay">
           <i class="results__preloader_circle-preloader"></i>
           <p class="results__preloader_text">Идет поиск новостей...</p>
         </div>
-        <div class="results__noresults nodisplay">
+        <div id="noresults" class="results__noresults nodisplay">
           <img class="results__noresults_image" src="./images/not-found.png" alt="Нет результатов">
           <h3 class="results__noresults_title">Ничего не найдено</h3>
           <p class="results__noresults_text">К сожалению по вашему запросу ничего не найдено.</p>
         </div>
       </div>
-      <div class="results_cards">
-        <div class="results-card">
-          <div class="results-card__image">
-            <img class="results-card__image-content" src="./images/image_08.png" alt="Изображение новости">
-            <div class="results-card__auth-hint nodisplay"></div>
-            <div class="results-card__favorite"></div>
-          </div>
-          <span class="results-card__date">2 августа, 2019</span>
-          <h3 class="results-card__title">Национальное достояние – парки</h3>
-          <p class="results-card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-          <a class="results-card__source link" href="lenta.ru" target="_blank">Лента.ру</a>
-        </div>
-        <div class="results-card">
-          <div class="results-card__image">
-            <img class="results-card__image-content" src="./images/image_07.png" alt="Изображение новости">
-            <div class="results-card__auth-hint nodisplay"></div>
-            <div class="results-card__favorite results-card__favorite_marked"></div>
-          </div>
-          <span class="results-card__date">2 августа, 2019</span>
-          <h3 class="results-card__title">Лесные огоньки: история одной фотографии</h3>
-          <p class="results-card__text">Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного
-            из местных чудес природы.</p>
-          <a class="results-card__source link" href="meduza.io" target="_blank">Медуза</a>
-        </div>
-        <div class="results-card">
-          <div class="results-card__image">
-            <img class="results-card__image-content" src="./images/image_04.png" alt="Изображение новости">
-            <div class="results-card__auth-hint">Войдите, чтобы сохранять статьи</div>
-            <div class="results-card__favorite"></div>
-          </div>
-          <span class="results-card__date">2 августа, 2019</span>
-          <h3 class="results-card__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h3>
-          <p class="results-card__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...</p>
-          <a class="results-card__source link" href="ria.ru" target="_blank">Риа</a>
-        </div>
+      <div id="results_cards" class="results_cards main">
       </div>
-      <button type="button" class="button show__button">Показать еще</button>
+      <button id="show__button" type="button" class="button show__button nodisplay">Показать еще</button>
 
     </section>
     <section class="about-author root__section">
@@ -108,7 +77,7 @@
     <section class="footer root__section">
       <p class="footer_copy">&copy; 2020 0911.ru, Powered by News API</p>
       <div class="footer_links">
-      <a class="link footer_link footer_link__home" href="./">Главная</a>
+      <a class="link footer_link footer_link__home" href="./index.html">Главная</a>
       <a class="link footer_link footer_link__yap" href="https://praktikum.yandex.ru" target="_blank">Яндекс.Практикум</a>
       <a class="link footer_link footer_link__gh" href="https://github.com/pad1a" target="_blank"><img src="./images/gh.png" alt="Иконка GH"></a>
       <a class="link footer_link footer_link__fb" href="https://www.facebook.com/maslov.online" target="_blank"><img src="./images/fb.png" alt="Иконка FB"></a>
@@ -132,7 +101,8 @@
             <input id="pass" type="text" name="pass" class="popup__input popup__input_type_pass error" placeholder="Введите пароль" required>
             <span id="error-pass" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
-          <button type="button" class="button popup__button">Войти</button>
+          <span id="error-up-button_auth" class="popup__error-message popup__error-message_hide"></span>
+          <button type="submit" class="button popup__button">Войти</button>
           <p class="popup__form_text">или<span class="popup__form_newuser-link"> Зарегистрироваться</span></p>
         </form>
       </div>
@@ -146,20 +116,21 @@
         <form class="popup__form" name="new">
           <div class="input-container">
             <span class="popup__input-hint">Email</span>
-            <input id="newemail" type="text" name="email" class="popup__input popup__input_type_email error" placeholder="Введите почту" required>
+            <input id="newemail" type="text" name="email" class="popup__input popup__input_type_email error" placeholder="Введите почту" required value="">
             <span id="error-newemail" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
           <div class="input-container">
             <span class="popup__input-hint">Пароль</span>
-            <input id="newpass" type="text" name="pass" class="popup__input popup__input_type_pass error" placeholder="Введите пароль" required>
+            <input id="newpass" type="text" name="pass" class="popup__input popup__input_type_pass error" placeholder="Введите пароль" required value="">
             <span id="error-newpass" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
           <div class="input-container">
             <span class="popup__input-hint">Имя</span>
-            <input id="name" type="text" name="name" class="popup__input popup__input_type_name error" placeholder="Имя" required>
+            <input id="name" type="text" name="name" class="popup__input popup__input_type_name error" placeholder="Имя" required value="">
             <span id="error-name" class="popup__error-message popup__error-message_hide">&nbsp;</span>
           </div>
-          <button type="button" class="button popup__button">Зарегистрироваться</button>
+          <span id="error-up-button_new" class="popup__error-message popup__error-message_hide"></span>
+          <button type="submit" class="button popup__button">Зарегистрироваться</button>
           <p class="popup__form_text">или<span class="popup__form_auth-link"> Войти</span></p>
         </form>
       </div>
@@ -175,6 +146,6 @@
     </div>
     <!-- // popup section -->
   </div>
-  <script src="main.732cdb57b55c2b0d0da4.js?8fe32a85559786773ddd"></script>
+  <script src="main.cd0e24618cf06fc33e44.js?940eac51a6454d1da3c5"></script>
   </body>
 </html>
