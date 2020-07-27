@@ -101,12 +101,11 @@ export default class MainApi {
 
   // Выходи пользователя
   signOut() {
-    this._signOut('/signout', 'GET');
+    this._signOut('/signout', 'POST');
   }
 
   _signOut(url, method) {
     sessionStorage.clear();
-    document.cookie = 'jwt=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     window.location.reload();
     return fetch(this.config.apiUrl + url, {
       method,
