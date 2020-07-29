@@ -1,6 +1,6 @@
 // Класс для хранения и отрисовки карточек новостей.
 export default class NewsList {
-  constructor(container, createcarditem, noresblock, restitle, rescards, showbutton) {
+  constructor(container, createcarditem, noresblock, restitle, rescards, showbutton, urlssavecard) {
     this.container = container;
     this.massive = [];
     this.createcarditem = createcarditem;
@@ -8,6 +8,7 @@ export default class NewsList {
     this.restitle = restitle;
     this.rescards = rescards;
     this.showbutton = showbutton;
+    this.urlssavecard = urlssavecard;
   }
 
   render(initNews) {

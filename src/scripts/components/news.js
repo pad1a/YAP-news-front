@@ -1,6 +1,6 @@
 // Класс, создающий карточку
 export default class News {
-  constructor(image, date, title, text, source, link, keyword, mainapi, id) {
+  constructor(image, date, title, text, source, link, keyword, mainapi, id, isSavedNews) {
     this.image = image;
     this.date = date;
     this.title = title;
@@ -10,9 +10,34 @@ export default class News {
     this.keyword = keyword;
     this.mainapi = mainapi;
     this.id = id;
+    this.issave = '';
+    this.issaveArray = [];
+    this.isSavedNews = isSavedNews;
+  }
+
+  isSaved(datalink){
+    const linksArray = [];
+    for (let i = 0; i < datalink.data.length; i++) {
+      const link = datalink.data[i].link;
+      linksArray.push(link);
+      this.issaveArray.concat(linksArray);
+    }
+    if (!linksArray.includes(this.link)) {
+      this.issave = 1;
+    } else {
+      this.issave = 2;
+      const CardButtonFavorite = this.cardElement.querySelector('.results-card__favorite');
+      CardButtonFavorite.classList.add('results-card__favorite_marked');
+      CardButtonFavorite.id = '';
+
+    }
   }
 
   create() {
+    this.mainapi.getArticles()
+    .then((data) => {
+      this.isSaved(data);
+    });
     const auth = sessionStorage.getItem('auth');
     // div карточки
     const cardContainer = document.createElement('div');
@@ -166,7 +191,10 @@ export default class News {
 
   add(event) {
     const newsTag = document.forms.search.elements.tag.value;
+    const CardButtonFavorite = this.cardElement.querySelector('.results-card__favorite');
+    CardButtonFavorite.classList.add('results-card__favorite_marked');
     this.mainapi.createNews(newsTag, this.title, this.text, this.date, this.source, this.link, this.image);
+    this.cardElement.querySelector('#add_button').removeEventListener('click', event);
   }
 
   remove(event) {

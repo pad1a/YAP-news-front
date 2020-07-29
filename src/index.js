@@ -106,7 +106,7 @@ popupNewUserValidate.setEventListeners(document.querySelector('#name'));
 const newsList = new NewsList(
   document.querySelector('.results_cards'),
   (image, date, title, text, source, link) => {
-    const cardItem = new News(image, date, title, text, source, link, null, mainApi);
+    const cardItem = new News(image, date, title, text, source, link, null, mainApi, null);
     cardItem.create();
     return cardItem;
   },

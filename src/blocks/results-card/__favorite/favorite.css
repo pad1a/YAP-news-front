@@ -25,7 +25,7 @@
 }
 
 
-.results-card__favorite_marked {
+.results-card__favorite_marked, .results-card__favorite_marked:hover {
   background-image: url('../../../images/marked.png');
 }
 

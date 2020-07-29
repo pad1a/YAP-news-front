@@ -90,7 +90,7 @@ export default class MainApi {
       }
     }
     if (buttonsOutArray.length > 1) {
-      for (let i = 0; i < buttonsOut.length; i++) {
+      for (let i = 0; i < buttonsOutArray.length; i++) {
         buttonsOutArray[i].classList.remove('nologin');
         buttonsOutArray[i].addEventListener('click', (event) => {
           this.signOut();
@@ -99,7 +99,7 @@ export default class MainApi {
     }
   }
 
-  // Выходи пользователя
+  // Выход пользователя
   signOut() {
     this._signOut('/signout', 'POST');
   }
@@ -131,6 +131,7 @@ export default class MainApi {
       .catch(this._handleError);
   }
 
+
   // сохранение новости
   createNews(keyword, title, text, date, source, link, image) {
     return this._postNews(keyword, title, text, date, source, link, image);
@@ -156,7 +157,7 @@ export default class MainApi {
         }),
       },
     )
-      .then(this._handleResult)
+      .then(this._handleResultPost)
       .catch(this._handleError);
   }
 
@@ -207,6 +208,20 @@ export default class MainApi {
     if (res.status === 401 || res.status === 400) {
       errElemAuth.classList.add('popup__error-message_visible');
       errElemAuth.textContent = 'Неверный Email или пароль';
+    }
+    return { error: res.status };
+  }
+
+  _handleResultArticles(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return { error: res.status };
+  }
+
+  _handleResultPost(res) {
+    if (res.ok) {
+      return res.json();
     }
     return { error: res.status };
   }
