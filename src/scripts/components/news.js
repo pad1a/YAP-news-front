@@ -17,6 +17,7 @@ export default class News {
     // div карточки
     const cardContainer = document.createElement('div');
     cardContainer.classList.add('results-card');
+    cardContainer.classList.add('hidden');
     // сслка карточки
     const cardLink = document.createElement('a');
     cardLink.classList.add('results-card__link');

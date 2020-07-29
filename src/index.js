@@ -7,6 +7,7 @@ import MobileMenu from './scripts/mobile-menu';
 import NewsList from './scripts/components/newslist';
 import News from './scripts/components/news';
 import ViewOrHide from './scripts/components/ViewOrHide';
+import ShowMore from './scripts/components/showmore';
 
 const auth = sessionStorage.getItem('auth');
 
@@ -19,6 +20,7 @@ const popupNewUser = new Popup(document.getElementById('newuser'), document.form
 const popupSuccess = new Popup(document.getElementById('success'));
 const ViewOrHideElement = new ViewOrHide();
 const mainApi = new MainApi(configMain, popupNewUser, popupSuccess, popupAuthUser, ViewOrHideElement);
+const showMore = new ShowMore(document.querySelectorAll('.show__button'));
 
 if (auth && auth === '1') {
   const buttonsSaveArray = document.querySelectorAll('.main_menu_button__save');
@@ -122,6 +124,10 @@ document.forms.search.addEventListener('submit', (event) => {
   newsApi.getNews()
     .then((data) => {
       newsList.render(data);
+      showMore.view();
     });
 });
 // .\NEWS
+
+// Показать еще
+showMore.add();

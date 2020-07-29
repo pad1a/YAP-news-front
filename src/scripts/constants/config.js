@@ -16,7 +16,7 @@ const configNews = {
     'Content-Type': 'application/json',
   },
   apiKey: '&apiKey=21b79c1ce8dd4de2b523a493956c04ed',
-  reqNewsString: `${serverNewsUrl}?` + 'language=ru&' + 'sortBy=popularity&' + 'pageSize=5&' + `from=${fromDate.toISOString()}&` + `to=${toDate.toISOString()}&`,
+  reqNewsString: `${serverNewsUrl}?` + 'language=ru&' + 'sortBy=popularity&' + 'pageSize=100&' + `from=${fromDate.toISOString()}&` + `to=${toDate.toISOString()}&`,
 };
 
 const configMain = {

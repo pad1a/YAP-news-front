@@ -32,9 +32,11 @@ body {
   color: #b6bcbf;
 }
 
-.nologin, .nodisplay {
+.nologin, .nodisplay, .hidden {
   display: none;
 }
+
+
 @media screen and (max-width: 1440px) {
   .link.active {
     line-height: 66px;
