@@ -8,7 +8,6 @@ export default class NewsList {
     this.restitle = restitle;
     this.rescards = rescards;
     this.showbutton = showbutton;
-    // this.mainapi = mainapi;
   }
 
   render(initNews) {

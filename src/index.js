@@ -18,32 +18,32 @@ const popupAuthUser = new Popup(document.getElementById('authuser'), document.fo
 const popupNewUser = new Popup(document.getElementById('newuser'), document.forms.new);
 const popupSuccess = new Popup(document.getElementById('success'));
 const ViewOrHideElement = new ViewOrHide();
-const mainapi = new MainApi(configMain, popupNewUser, popupSuccess, popupAuthUser, ViewOrHideElement);
+const mainApi = new MainApi(configMain, popupNewUser, popupSuccess, popupAuthUser, ViewOrHideElement);
 
 if (auth && auth === '1') {
-  const buttonSave = document.querySelectorAll('.main_menu_button__save');
-  const button = document.querySelectorAll('.open_auth');
-  const buttonOut = document.querySelectorAll('.signout');
-  const buttonOutimage = document.querySelectorAll('.main_menu_button__auth_image');
-  mainapi.getUser();
-  if (buttonSave.length > 1) {
-    for (let i = 0; i < buttonSave.length; i++) {
-      buttonSave[i].classList.remove('nologin');
+  const buttonsSaveArray = document.querySelectorAll('.main_menu_button__save');
+  const buttonArray = document.querySelectorAll('.open_auth');
+  const buttonsOutArray = document.querySelectorAll('.signout');
+  const buttonsOutimageArray = document.querySelectorAll('.main_menu_button__auth_image');
+  mainApi.getUser();
+  if (buttonsSaveArray.length > 1) {
+    for (let i = 0; i < buttonsSaveArray.length; i++) {
+      buttonsSaveArray[i].classList.remove('nologin');
     }
   }
-  if (buttonOutimage.length > 1) {
-    for (let i = 0; i < buttonSave.length; i++) {
-      buttonOutimage[i].classList.remove('nologin');
+  if (buttonsOutimageArray.length > 1) {
+    for (let i = 0; i < buttonsSaveArray.length; i++) {
+      buttonsOutimageArray[i].classList.remove('nologin');
     }
   }
-  if (buttonOut.length > 1) {
-    for (let i = 0; i < buttonSave.length; i++) {
-      buttonOut[i].classList.remove('nologin');
+  if (buttonsOutArray.length > 1) {
+    for (let i = 0; i < buttonsSaveArray.length; i++) {
+      buttonsOutArray[i].classList.remove('nologin');
     }
   }
-  if (button.length > 1) {
-    for (let i = 0; i < buttonSave.length; i++) {
-      button[i].classList.add('nologin');
+  if (buttonArray.length > 1) {
+    for (let i = 0; i < buttonsSaveArray.length; i++) {
+      buttonArray[i].classList.add('nologin');
     }
   }
 }
@@ -54,7 +54,7 @@ document.forms.new.addEventListener('submit', (event) => {
   const email = document.forms.new.email.value;
   const pass = document.forms.new.pass.value;
   const name = document.forms.new.name.value;
-  mainapi.signup(email, pass, name);
+  mainApi.signup(email, pass, name);
 });
 
 // авторизация
@@ -62,7 +62,7 @@ document.forms.auth.addEventListener('submit', (event) => {
   event.preventDefault();
   const email = document.forms.auth.email.value;
   const pass = document.forms.auth.pass.value;
-  mainapi.signin(email, pass);
+  mainApi.signin(email, pass);
 });
 
 // Слушатели
@@ -101,10 +101,10 @@ popupNewUserValidate.setEventListeners(document.querySelector('#name'));
 
 // NEWS
 // отрисовка карточек
-const newslist = new NewsList(
+const newsList = new NewsList(
   document.querySelector('.results_cards'),
   (image, date, title, text, source, link) => {
-    const cardItem = new News(image, date, title, text, source, link, null, mainapi);
+    const cardItem = new News(image, date, title, text, source, link, null, mainApi);
     cardItem.create();
     return cardItem;
   },
@@ -117,11 +117,11 @@ const newslist = new NewsList(
 // поиск по тегу при клике на поиск
 document.forms.search.addEventListener('submit', (event) => {
   event.preventDefault();
-  const newstag = document.forms.search.elements.tag.value;
-  const newsapi = new NewsApi(configNews, newstag);
-  newsapi.getNews()
+  const newsTag = document.forms.search.elements.tag.value;
+  const newsApi = new NewsApi(configNews, newsTag);
+  newsApi.getNews()
     .then((data) => {
-      newslist.render(data);
+      newsList.render(data);
     });
 });
 // .\NEWS

@@ -4,9 +4,10 @@ const serverNewsUrl = process.env.NODE_ENV === 'development' ? 'https://praktiku
 const serverApiUrl = process.env.NODE_ENV === 'development' ? 'https://api.0911.ru' : 'https://api.0911.ru';
 
 // текущая дата и -7 дней от нее
-const totimestamp = Date.now();
-const to = new Date(totimestamp);
-const from = new Date(totimestamp - 7 * 24 * 3600 * 1000);
+const toTimeStamp = Date.now();
+const toDate = new Date(toTimeStamp);
+const weekTime = 604800000;
+const fromDate = new Date(toTimeStamp - weekTime);
 
 // конфиг для поучения новостей
 const configNews = {
@@ -15,7 +16,7 @@ const configNews = {
     'Content-Type': 'application/json',
   },
   apiKey: '&apiKey=21b79c1ce8dd4de2b523a493956c04ed',
-  reqNewsString: `${serverNewsUrl}?` + 'language=ru&' + 'sortBy=popularity&' + 'pageSize=5&' + `from=${from.toISOString()}&` + `to=${to.toISOString()}&`,
+  reqNewsString: `${serverNewsUrl}?` + 'language=ru&' + 'sortBy=popularity&' + 'pageSize=5&' + `from=${fromDate.toISOString()}&` + `to=${toDate.toISOString()}&`,
 };
 
 const configMain = {

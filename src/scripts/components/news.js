@@ -164,16 +164,16 @@ export default class News {
   }
 
   add(event) {
-    const newstag = document.forms.search.elements.tag.value;
-    this.mainapi.createNews(newstag, this.title, this.text, this.date, this.source, this.link, this.image);
+    const newsTag = document.forms.search.elements.tag.value;
+    this.mainapi.createNews(newsTag, this.title, this.text, this.date, this.source, this.link, this.image);
   }
 
   remove(event) {
     const tItem = event.target.closest('.results-card');
     const tContainer = event.target.closest('.results_cards');
     const newsnumEl = document.querySelector('.search_text__num');
-    const newsnum = +newsnumEl.textContent - 1;
-    newsnumEl.textContent = newsnum;
+    const newsNum = +newsnumEl.textContent - 1;
+    newsnumEl.textContent = newsNum;
     tContainer.removeChild(tItem);
     this.mainapi.removeNews(this.id);
   }

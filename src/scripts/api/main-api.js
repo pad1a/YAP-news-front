@@ -38,7 +38,7 @@ export default class MainApi {
   }
 
   _requestPostSignIn(url, method, email, pass) {
-    const pop = this.popupNewUser;
+    const popupNewUser = this.popupNewUser;
     return fetch(
       this.config.apiUrl + url,
       {
@@ -52,7 +52,7 @@ export default class MainApi {
         }),
       },
     )
-      .then((data) => this._handleResultSign(data, pop))
+      .then((data) => this._handleResultSign(data, popupNewUser))
       .catch(this._handleError);
   }
 
@@ -75,24 +75,24 @@ export default class MainApi {
   }
 
   _setName(data) {
-    const username = data.name;
-    const nameEl = document.getElementsByClassName('username');
-    const button = document.querySelectorAll('.signin');
-    const buttonOut = document.querySelectorAll('.signout');
-    if (nameEl.length > 1) {
-      for (let i = 0; i < nameEl.length; i++) {
-        nameEl[i].textContent = username;
+    const userName = data.name;
+    const nameElArray = document.getElementsByClassName('username');
+    const buttonsArray = document.querySelectorAll('.signin');
+    const buttonsOutArray = document.querySelectorAll('.signout');
+    if (nameElArray.length > 1) {
+      for (let i = 0; i < nameElArray.length; i++) {
+        nameElArray[i].textContent = userName;
       }
     }
-    if (button.length > 1) {
-      for (let i = 0; i < button.length; i++) {
-        button[i].classList.add('nologin');
+    if (buttonsArray.length > 1) {
+      for (let i = 0; i < buttonsArray.length; i++) {
+        buttonsArray[i].classList.add('nologin');
       }
     }
-    if (buttonOut.length > 1) {
-      for (let i = 0; i < buttonOut.length; i++) {
-        buttonOut[i].classList.remove('nologin');
-        buttonOut[i].addEventListener('click', (event) => {
+    if (buttonsOutArray.length > 1) {
+      for (let i = 0; i < buttonsOut.length; i++) {
+        buttonsOutArray[i].classList.remove('nologin');
+        buttonsOutArray[i].addEventListener('click', (event) => {
           this.signOut();
         });
       }
