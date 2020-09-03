@@ -198,12 +198,19 @@ export default class News {
   }
 
   remove(event) {
-    const tItem = event.target.closest('.results-card');
-    const tContainer = event.target.closest('.results_cards');
-    const newsnumEl = document.querySelector('.search_text__num');
-    const newsNum = +newsnumEl.textContent - 1;
-    newsnumEl.textContent = newsNum;
-    tContainer.removeChild(tItem);
-    this.mainapi.removeNews(this.id);
+    let apiNews = this.mainapi;
+    let cardId = this.id;
+    async function delNews(api, id) {
+      let promise = api.removeNews(id);
+      let res = await promise;
+      alert(res.message);
+      const tItem = event.target.closest('.results-card');
+      const tContainer = event.target.closest('.results_cards');
+      const newsnumEl = document.querySelector('.search_text__num');
+      const newsNum = +newsnumEl.textContent - 1;
+      newsnumEl.textContent = newsNum;
+      tContainer.removeChild(tItem);
+    }
+    delNews(apiNews, cardId);
   }
 }
