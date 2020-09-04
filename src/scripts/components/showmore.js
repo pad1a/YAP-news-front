@@ -17,12 +17,15 @@ export default class ShowMore {
         const hiddenElArray = this.parentNode.querySelectorAll('div.hidden');
         for (let i = 0; i < showPerClick; i++) {
           if (hiddenElArray.length <= 3) {
-            hiddenElArray[0].classList.remove('hidden');
-            hiddenElArray[1].classList.remove('hidden');
-            hiddenElArray[2].classList.remove('hidden');
+            let hiddenElArrayLen = hiddenElArray.length;
+            for (let i = 0; i < hiddenElArrayLen; i++) {
+              hiddenElArray[i].classList.remove('hidden');
+            }
             document.getElementById('show__button').classList.add('nodisplay');
           }
-          hiddenElArray[i].classList.remove('hidden');
+          if(!!hiddenElArray[i]){
+            hiddenElArray[i].classList.remove('hidden');
+          }
         }
       });
     }
