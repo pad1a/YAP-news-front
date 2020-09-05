@@ -190,11 +190,28 @@ export default class News {
   }
 
   add(event) {
-    const newsTag = document.forms.search.elements.tag.value;
-    const CardButtonFavorite = this.cardElement.querySelector('.results-card__favorite');
-    CardButtonFavorite.classList.add('results-card__favorite_marked');
-    this.mainapi.createNews(newsTag, this.title, this.text, this.date, this.source, this.link, this.image);
-    this.cardElement.querySelector('#add_button').removeEventListener('click', event);
+    let apiNews = this.mainapi;
+    let cardEl = this.cardElement;
+    let titleEl = this.title;
+    let textEl = this.text;
+    let dateEl = this.date;
+    let sourceEl = this.source;
+    let linkEl = this.link;
+    let imageEl = this.image;
+    async function saveNews() {
+      const newsTag = document.forms.search.elements.tag.value;
+      let promise = apiNews.createNews(newsTag, titleEl, textEl, dateEl, sourceEl, linkEl, imageEl);
+      let res = await promise;
+      if (!res.data){
+        alert('Что-то пошло не так...')
+      } else {
+        alert('Новость сохранена');
+        const CardButtonFavorite = cardEl.querySelector('.results-card__favorite');
+        CardButtonFavorite.classList.add('results-card__favorite_marked');
+        cardEl.querySelector('#add_button').removeEventListener('click', event);
+      }
+    }
+    saveNews();
   }
 
   remove(event) {
@@ -203,13 +220,17 @@ export default class News {
     async function delNews(api, id) {
       let promise = api.removeNews(id);
       let res = await promise;
-      alert(res.message);
-      const tItem = event.target.closest('.results-card');
-      const tContainer = event.target.closest('.results_cards');
-      const newsnumEl = document.querySelector('.search_text__num');
-      const newsNum = +newsnumEl.textContent - 1;
-      newsnumEl.textContent = newsNum;
-      tContainer.removeChild(tItem);
+      if (res.message === 'Новость удалена') {
+        const tItem = event.target.closest('.results-card');
+        const tContainer = event.target.closest('.results_cards');
+        const newsnumEl = document.querySelector('.search_text__num');
+        const newsNum = +newsnumEl.textContent - 1;
+        newsnumEl.textContent = newsNum;
+        tContainer.removeChild(tItem);
+        alert(res.message);
+      } else {
+        alert('Что то пошло не так...');
+      }
     }
     delNews(apiNews, cardId);
   }

@@ -227,10 +227,14 @@ export default class MainApi {
   }
 
   _handleResult(res) {
-    if (res.ok) {
+    /*if (res.ok) {
       return res.json();
     }
-    return { error: res.status };
+    return { error: res.status };*/
+    if (!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
   }
 
   _handleError(e) {
