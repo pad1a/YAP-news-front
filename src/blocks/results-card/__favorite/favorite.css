@@ -25,7 +25,13 @@
 }
 
 
-.results-card__favorite_marked {
+.results-card__favorite_marked, .results-card__favorite_marked:hover {
   background-image: url('../../../images/marked.png');
 }
+
+.results-card__favorite:hover + .results-card__auth-hint {
+  opacity: 1;
+}
+
+
 

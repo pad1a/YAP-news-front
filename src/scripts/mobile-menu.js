@@ -14,7 +14,7 @@ export default class MobileMenu {
   open(event) {
     this.setEventListeners();
     event.target.classList.contains('nav_burger__open');
-    if (!this.headElement.classList.contains('head__save')){
+    if (!this.headElement.classList.contains('head__save')) {
       this.headElement.classList.add('mobile-menu_is-opened');
     }
     this.headElement.querySelector('.nav_burger__open').classList.add('nav_burger__hide');
